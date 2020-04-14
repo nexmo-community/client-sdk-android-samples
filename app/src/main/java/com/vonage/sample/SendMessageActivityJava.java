@@ -9,7 +9,6 @@ import com.nexmo.client.NexmoClient;
 import com.nexmo.client.NexmoConversation;
 import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
-import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import timber.log.Timber;
 
@@ -43,12 +42,11 @@ public class SendMessageActivityJava extends AppCompatActivity {
 
     private void sendMessage(NexmoConversation conversation, String message) {
         conversation.sendText(message, new NexmoRequestListener<Void>() {
-            public void onSuccess(@org.jetbrains.annotations.Nullable Void p0) {
+            public void onSuccess(@Nullable Void p0) {
                 Timber.d("Message has been sent");
             }
 
             public void onError(@NotNull NexmoApiError apiError) {
-                Intrinsics.checkParameterIsNotNull(apiError, "apiError");
                 Timber.d("Error: Message not sent  %s", apiError.getMessage());
             }
         });
