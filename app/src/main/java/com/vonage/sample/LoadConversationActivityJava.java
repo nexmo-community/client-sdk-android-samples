@@ -17,10 +17,11 @@ public class LoadConversationActivityJava extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
 
+        // No need for client initialization here. Client initialization is already done in BaseApplication class.
+        // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
         getConversation(client);
-
     }
 
     private void getConversation(NexmoClient client) {
