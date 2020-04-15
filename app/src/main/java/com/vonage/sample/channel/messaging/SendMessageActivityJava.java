@@ -28,7 +28,6 @@ public class SendMessageActivityJava extends AppCompatActivity {
 
     private void getConversation(NexmoClient client) {
         client.getConversation("CONVERSATION_ID", new NexmoRequestListener<NexmoConversation>() {
-
             @Override
             public void onSuccess(@Nullable NexmoConversation conversation) {
                 Timber.d("Conversation loaded");
@@ -45,7 +44,6 @@ public class SendMessageActivityJava extends AppCompatActivity {
 
     private void sendMessage(@NonNull NexmoConversation conversation, String message) {
         conversation.sendText(message, new NexmoRequestListener<Void>() {
-
             public void onSuccess(@Nullable Void p0) {
                 Timber.d("Message sent");
             }

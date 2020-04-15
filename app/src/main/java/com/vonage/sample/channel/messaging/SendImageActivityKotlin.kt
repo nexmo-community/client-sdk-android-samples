@@ -23,7 +23,6 @@ class SendImageActivityKotlin : AppCompatActivity() {
 
     private fun getConversation(client: NexmoClient) {
         client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
-
             override fun onSuccess(conversation: NexmoConversation?) {
                 Timber.d("Conversation loaded")
 
@@ -38,7 +37,6 @@ class SendImageActivityKotlin : AppCompatActivity() {
     }
 
     private fun sendImage(conversation: NexmoConversation, imageFile: File) {
-
         conversation.sendAttachment(imageFile, object : NexmoRequestListener<Void> {
             override fun onSuccess(p0: Void?) {
                 Timber.d("Image sent")

@@ -59,9 +59,7 @@ public class ReceiveMessageActivityJava extends AppCompatActivity {
     }
 
     private void getConversation(NexmoClient client) {
-
         client.getConversation("CONVERSATION_ID", new NexmoRequestListener<NexmoConversation>() {
-
             @Override
             public void onSuccess(@Nullable NexmoConversation conversation) {
                 Timber.d("Conversation loaded");

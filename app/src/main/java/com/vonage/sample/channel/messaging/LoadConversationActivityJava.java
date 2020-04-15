@@ -26,7 +26,6 @@ public class LoadConversationActivityJava extends AppCompatActivity {
 
     private void getConversation(NexmoClient client) {
         client.getConversation("CONVERSATION_ID", new NexmoRequestListener<NexmoConversation>() {
-
             @Override
             public void onSuccess(@Nullable NexmoConversation nexmoConversation) {
                 Timber.d("Conversation loaded");

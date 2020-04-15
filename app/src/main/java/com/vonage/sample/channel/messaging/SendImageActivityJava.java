@@ -31,7 +31,6 @@ public class SendImageActivityJava extends AppCompatActivity {
 
     private void getConversation(NexmoClient client) {
         client.getConversation("CONVERSATION_ID", new NexmoRequestListener<NexmoConversation>() {
-
             @Override
             public void onSuccess(@Nullable NexmoConversation conversation) {
                 Timber.d("Conversation loaded");
@@ -49,7 +48,6 @@ public class SendImageActivityJava extends AppCompatActivity {
 
     private void sendImage(@NonNull NexmoConversation conversation, File imageFile) {
         conversation.sendAttachment(imageFile, new NexmoRequestListener<Void>() {
-
             public void onSuccess(@Nullable Void p0) {
                 Timber.d("Image sent");
             }

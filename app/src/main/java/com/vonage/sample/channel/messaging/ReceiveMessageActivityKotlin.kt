@@ -19,7 +19,6 @@ import timber.log.Timber
 class ReceiveMessageActivityKotlin : AppCompatActivity() {
 
     private val messageListener = object : NexmoMessageEventListener {
-
         override fun onTypingEvent(typingEvent: NexmoTypingEvent) {}
 
         override fun onAttachmentEvent(attachmentEvent: NexmoAttachmentEvent) {}
@@ -48,9 +47,7 @@ class ReceiveMessageActivityKotlin : AppCompatActivity() {
     }
 
     private fun getConversation(client: NexmoClient) {
-
         client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
-
             override fun onSuccess(conversation: NexmoConversation?) {
                 Timber.d("Conversation loaded")
                 conversation?.addMessageEventListener(messageListener)

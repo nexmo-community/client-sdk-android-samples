@@ -21,7 +21,6 @@ class SendMessageActivityKotlin : AppCompatActivity() {
 
     private fun getConversation(client: NexmoClient) {
         client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
-
             override fun onSuccess(conversation: NexmoConversation?) {
                 Timber.d("Conversation loaded")
                 conversation?.let { sendMessage(it, "Hello") }
@@ -34,7 +33,6 @@ class SendMessageActivityKotlin : AppCompatActivity() {
     }
 
     private fun sendMessage(conversation: NexmoConversation, message: String) {
-
         conversation.sendText(message, object : NexmoRequestListener<Void> {
             override fun onSuccess(p0: Void?) {
                 Timber.d("Message sent")
