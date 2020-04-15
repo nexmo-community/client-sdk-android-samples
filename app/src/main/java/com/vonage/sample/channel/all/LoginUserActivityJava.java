@@ -1,4 +1,4 @@
-package com.vonage.sample;
+package com.vonage.sample.channel.all;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;

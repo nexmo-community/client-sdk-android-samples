@@ -1,4 +1,4 @@
-package com.vonage.sample
+package com.vonage.sample.channel.messaging
 
 import android.os.Bundle
 import android.os.PersistableBundle
