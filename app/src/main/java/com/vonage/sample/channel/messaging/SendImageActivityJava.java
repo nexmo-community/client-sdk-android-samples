@@ -9,10 +9,13 @@ import com.nexmo.client.NexmoClient;
 import com.nexmo.client.NexmoConversation;
 import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
+import com.vonage.sample.core.utils.AttachmentUtils;
 import org.jetbrains.annotations.NotNull;
 import timber.log.Timber;
 
-public class SendMessageActivityJava extends AppCompatActivity {
+import java.io.File;
+
+public class SendImageActivityJava extends AppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -33,7 +36,8 @@ public class SendMessageActivityJava extends AppCompatActivity {
             public void onSuccess(@Nullable NexmoConversation conversation) {
                 Timber.d("Conversation loaded");
 
-                sendMessage(conversation, "Hello");
+                File file = AttachmentUtils.generateImageFile(SendImageActivityJava.this);
+                sendImage(conversation, file);
             }
 
             @Override
@@ -43,15 +47,15 @@ public class SendMessageActivityJava extends AppCompatActivity {
         });
     }
 
-    private void sendMessage(@NonNull NexmoConversation conversation, String message) {
-        conversation.sendText(message, new NexmoRequestListener<Void>() {
+    private void sendImage(@NonNull NexmoConversation conversation, File imageFile) {
+        conversation.sendAttachment(imageFile, new NexmoRequestListener<Void>() {
 
             public void onSuccess(@Nullable Void p0) {
-                Timber.d("Message sent");
+                Timber.d("Image sent");
             }
 
             public void onError(@NotNull NexmoApiError apiError) {
-                Timber.d("Error: Message not sent %s", apiError.getMessage());
+                Timber.d("Error: Image not sent %s", apiError.getMessage());
             }
         });
     }
