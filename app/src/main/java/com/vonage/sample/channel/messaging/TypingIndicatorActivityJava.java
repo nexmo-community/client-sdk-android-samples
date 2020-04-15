@@ -10,31 +10,44 @@ import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
-public class ReceiveImageActivityJava extends AppCompatActivity {
+public class TypingIndicatorActivityJava extends AppCompatActivity {
 
     private NexmoMessageEventListener messageListener = new NexmoMessageEventListener() {
+
         @Override
-        public void onTextEvent(@NonNull NexmoTextEvent nexmoTextEvent) {
+        public void onTextEvent(@NonNull NexmoTextEvent textEvent) {
         }
 
         @Override
-        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent nexmoAttachmentEvent) {
+        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent attachmentEvent) {
         }
 
         @Override
-        public void onEventDeleted(@NonNull NexmoDeletedEvent nexmoDeletedEvent) {
+        public void onEventDeleted(@NonNull NexmoDeletedEvent deletedEvent) {
+
         }
 
         @Override
-        public void onSeenReceipt(@NonNull NexmoSeenEvent nexmoSeenEvent) {
+        public void onSeenReceipt(@NonNull NexmoSeenEvent seenEvent) {
         }
 
         @Override
-        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent nexmoDeliveredEvent) {
+        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent deliveredEvent) {
         }
 
         @Override
-        public void onTypingEvent(@NonNull NexmoTypingEvent nexmoTypingEvent) {
+        public void onTypingEvent(@NonNull NexmoTypingEvent typingEvent) {
+            String userName = typingEvent.getFromMember().getUser().getName();
+
+            String typingState;
+
+            if(typingEvent.getState() == NexmoTypingState.ON) {
+                typingState = "typing";
+            } else {
+                typingState = "not typing";
+            }
+
+            Timber.d("User " + userName + " is " + typingState);
         }
     };
 
