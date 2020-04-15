@@ -2,7 +2,6 @@ package com.vonage.sample.channel.messaging
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoAttachmentEvent
 import com.nexmo.client.NexmoClient
@@ -25,7 +24,7 @@ class TypingIndicatorActivityKotlin : AppCompatActivity() {
             val userName = typingEvent.fromMember.user.name
             val typingState = if(typingEvent.state == NexmoTypingState.ON) "typing" else "not typing"
 
-            Log.d("TAG", "User $userName is $typingState")
+            Timber.d("User $userName is $typingState")
         }
 
         override fun onAttachmentEvent(attachmentEvent: NexmoAttachmentEvent) {}
