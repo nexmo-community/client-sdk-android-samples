@@ -14,28 +14,22 @@ public class ReceiveImageActivityJava extends AppCompatActivity {
 
     private NexmoMessageEventListener messageListener = new NexmoMessageEventListener() {
         @Override
-        public void onTextEvent(@NonNull NexmoTextEvent nexmoTextEvent) {
-        }
+        public void onTextEvent(@NonNull NexmoTextEvent nexmoTextEvent) {}
 
         @Override
-        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent nexmoAttachmentEvent) {
-        }
+        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent nexmoAttachmentEvent) {}
 
         @Override
-        public void onEventDeleted(@NonNull NexmoDeletedEvent nexmoDeletedEvent) {
-        }
+        public void onEventDeleted(@NonNull NexmoDeletedEvent nexmoDeletedEvent) {}
 
         @Override
-        public void onSeenReceipt(@NonNull NexmoSeenEvent nexmoSeenEvent) {
-        }
+        public void onSeenReceipt(@NonNull NexmoSeenEvent nexmoSeenEvent) {}
 
         @Override
-        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent nexmoDeliveredEvent) {
-        }
+        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent nexmoDeliveredEvent) {}
 
         @Override
-        public void onTypingEvent(@NonNull NexmoTypingEvent nexmoTypingEvent) {
-        }
+        public void onTypingEvent(@NonNull NexmoTypingEvent nexmoTypingEvent) {}
     };
 
     @Override

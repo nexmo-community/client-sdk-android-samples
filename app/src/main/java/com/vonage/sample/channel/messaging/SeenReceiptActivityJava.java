@@ -13,7 +13,6 @@ import timber.log.Timber;
 public class SeenReceiptActivityJava extends AppCompatActivity {
 
     private NexmoMessageEventListener messageListener = new NexmoMessageEventListener() {
-
         @Override
         public void onTextEvent(@NonNull NexmoTextEvent textEvent) {}
 

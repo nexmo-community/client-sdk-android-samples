@@ -13,27 +13,20 @@ import timber.log.Timber;
 public class TypingIndicatorActivityJava extends AppCompatActivity {
 
     private NexmoMessageEventListener messageListener = new NexmoMessageEventListener() {
+        @Override
+        public void onTextEvent(@NonNull NexmoTextEvent textEvent) {}
 
         @Override
-        public void onTextEvent(@NonNull NexmoTextEvent textEvent) {
-        }
+        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent attachmentEvent) {}
 
         @Override
-        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent attachmentEvent) {
-        }
+        public void onEventDeleted(@NonNull NexmoDeletedEvent deletedEvent) {}
 
         @Override
-        public void onEventDeleted(@NonNull NexmoDeletedEvent deletedEvent) {
-
-        }
+        public void onSeenReceipt(@NonNull NexmoSeenEvent seenEvent) {}
 
         @Override
-        public void onSeenReceipt(@NonNull NexmoSeenEvent seenEvent) {
-        }
-
-        @Override
-        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent deliveredEvent) {
-        }
+        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent deliveredEvent) {}
 
         @Override
         public void onTypingEvent(@NonNull NexmoTypingEvent typingEvent) {
@@ -41,7 +34,7 @@ public class TypingIndicatorActivityJava extends AppCompatActivity {
 
             String typingState;
 
-            if(typingEvent.getState() == NexmoTypingState.ON) {
+            if (typingEvent.getState() == NexmoTypingState.ON) {
                 typingState = "typing";
             } else {
                 typingState = "not typing";

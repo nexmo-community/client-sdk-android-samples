@@ -13,7 +13,6 @@ import timber.log.Timber;
 public class ReceiveMessageActivityJava extends AppCompatActivity {
 
     private NexmoMessageEventListener messageListener = new NexmoMessageEventListener() {
-
         @Override
         public void onTextEvent(@NonNull NexmoTextEvent textEvent) {
             String userName = textEvent.getFromMember().getUser().getName();
@@ -23,25 +22,19 @@ public class ReceiveMessageActivityJava extends AppCompatActivity {
         }
 
         @Override
-        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent attachmentEvent) {
-        }
+        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent attachmentEvent) {}
 
         @Override
-        public void onEventDeleted(@NonNull NexmoDeletedEvent deletedEvent) {
-
-        }
+        public void onEventDeleted(@NonNull NexmoDeletedEvent deletedEvent) {}
 
         @Override
-        public void onSeenReceipt(@NonNull NexmoSeenEvent seenEvent) {
-        }
+        public void onSeenReceipt(@NonNull NexmoSeenEvent seenEvent) {}
 
         @Override
-        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent deliveredEvent) {
-        }
+        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent deliveredEvent) {}
 
         @Override
-        public void onTypingEvent(@NonNull NexmoTypingEvent typingEvent) {
-        }
+        public void onTypingEvent(@NonNull NexmoTypingEvent typingEvent) {}
     };
 
     @Override
