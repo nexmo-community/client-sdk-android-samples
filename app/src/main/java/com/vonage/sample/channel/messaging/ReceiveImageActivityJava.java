@@ -10,37 +10,38 @@ import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
-public class ReceiveMessageActivityJava extends AppCompatActivity {
+public class ReceiveImageActivityJava extends AppCompatActivity {
 
     private NexmoMessageEventListener messageListener = new NexmoMessageEventListener() {
 
         @Override
-        public void onTextEvent(@NonNull NexmoTextEvent textEvent) {
-            String userName = textEvent.getFromMember().getUser().getName();
-            String text = textEvent.getText();
-
-            Timber.d("Message received. User " + userName + " : " + text);
-        }
-
-        @Override
-        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent attachmentEvent) {
-        }
-
-        @Override
-        public void onEventDeleted(@NonNull NexmoDeletedEvent deletedEvent) {
+        public void onTextEvent(@NonNull NexmoTextEvent nexmoTextEvent) {
 
         }
 
         @Override
-        public void onSeenReceipt(@NonNull NexmoSeenEvent seenEvent) {
+        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent nexmoAttachmentEvent) {
+
         }
 
         @Override
-        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent deliveredEvent) {
+        public void onEventDeleted(@NonNull NexmoDeletedEvent nexmoDeletedEvent) {
+
         }
 
         @Override
-        public void onTypingEvent(@NonNull NexmoTypingEvent typingEvent) {
+        public void onSeenReceipt(@NonNull NexmoSeenEvent nexmoSeenEvent) {
+
+        }
+
+        @Override
+        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent nexmoDeliveredEvent) {
+
+        }
+
+        @Override
+        public void onTypingEvent(@NonNull NexmoTypingEvent nexmoTypingEvent) {
+
         }
     };
 
