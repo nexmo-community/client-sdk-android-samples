@@ -5,7 +5,7 @@ import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoClient
 
-class ConfigureIceServerActivityKotlin : AppCompatActivity() {
+class ConfigureIceServerUrlActivityKotlin : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)

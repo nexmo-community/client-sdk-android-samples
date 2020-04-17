@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.nexmo.client.NexmoClient;
 
-public class ConfigureIceServerActivityJava extends AppCompatActivity {
+public class ConfigureIceServerUrlActivityJava extends AppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
