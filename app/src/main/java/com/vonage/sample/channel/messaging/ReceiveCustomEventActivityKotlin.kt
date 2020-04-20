@@ -12,8 +12,8 @@ import timber.log.Timber
 
 class ReceiveCustomEventActivityKotlin : AppCompatActivity() {
 
-    private val customEventListener = NexmoCustomEventListener { event ->
-        Timber.d("Incoming custom event of type ${event.customType} : ${event.data}")
+    private val customEventListener = NexmoCustomEventListener {
+        Timber.d("Incoming custom event of type ${it.customType} : ${it.data}")
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
