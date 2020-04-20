@@ -15,7 +15,7 @@ Client parameters can be configured during initialization:
 ## General
 
 - Login user ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/LoginUserActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/LoginUserActivityJava.java))
-- Listen for client connection changes ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/ConnectionStateListenerActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/ConnectionStateListenerActivityJava.java))
+- Listen for client connection status changes ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/ConnectionStateListenerActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/ConnectionStateListenerActivityJava.java))
 - Check if is connected ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/IsConnectedActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/IsConnectedActivityJava.java))
 - Configure Firebase Messaging Service ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/ClientFirebaseMessagingServiceKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/ClientFirebaseMessagingServiceJava.java))
 
@@ -27,6 +27,21 @@ Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 
 Check the developer portal [documentation](https://developer.nexmo.com/client-sdk/in-app-messaging/overview),
 check the [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android) or review below examples:
+- Load conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationActivityJava.java))
+- Load conversation events([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationEventsActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationEventsActivityJava.java))
+- Send message ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SendMessageActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SendMessageActivityJava.java))
+- Receive message ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveMessageActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveMessageActivityJava.java))
+- Typying indicator ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/TypingIndicatorActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/TypingIndicatorActivityJava.java))
+- Invite user ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/InviteUserActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/InviteUserActivityJava.java))
+- Accept user invitation to conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/AcceptUserInvitationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/AcceptUserInvitationActivityJava.java))
+- Member added to conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/MemberAddedActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/MemberAddedActivityJava.java))
+- Member invited to conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/MemberInvitedActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/MemberInvitedActivityJava.java))
+- Member removed from conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/MemberRemovedActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/MemberRemovedActivityJava.java))
+- Send image attachment ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SendImageActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SendImageActivityJava.java))
+- Receive image attachment ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveImageActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveImageActivityJava.java))
+- Send custom event ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SendCustomEventActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SendCustomEventActivityJava.java))
+- Receive custom event ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveCustomEventActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveCustomEventActivityJava.java))
+- Event seen by another user ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SeenReceiptActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SeenReceiptActivityJava.java))
 
 ### Voice
 Check the developer portal [documentation](https://developer.nexmo.com/client-sdk/in-app-voice/overview),
