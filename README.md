@@ -1,4 +1,4 @@
-[![CircleCI](https://img.shields.io/maven-central/v/com.nexmo.android/client-sdk)](https://repo.maven.apache.org/maven2/com/nexmo/android/client-sdk/)
+[![maven-central](https://img.shields.io/maven-central/v/com.nexmo.android/client-sdk)](https://repo.maven.apache.org/maven2/com/nexmo/android/client-sdk/)
 # Client Sdk Android Samples
 Various samples of Nexmo Android Client-SDK.
 
