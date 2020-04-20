@@ -10,7 +10,7 @@ Client parameters can be configured during initialization:
 - Basic client initialization ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/BasicConfigurationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/BasicConfigurationActivityJava.java))
 - Configure logging level ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/SetLogLevelActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/SetLogLevelActivityJava.java))
 - Configure data center ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureDataCenterActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureDataCenterActivityJava.java))
-- Configure server Url ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureIceServerUrlActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureIceServerUrlActivityJava.java))
+- Configure server url ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureIceServerUrlActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureIceServerUrlActivityJava.java))
 
 ## General
 
@@ -27,9 +27,6 @@ Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 
 Check the developer portal [documentation](https://developer.nexmo.com/client-sdk/in-app-messaging/overview),
 check the [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android) or review below examples:
-
--  ([Kotlin](), [Java]())
--  ([Kotlin](), [Java]())
 
 ### Voice
 Check the developer portal [documentation](https://developer.nexmo.com/client-sdk/in-app-voice/overview),
