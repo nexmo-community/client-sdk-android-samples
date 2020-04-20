@@ -11,7 +11,7 @@ import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
-public class LoadConversationActivityJava extends AppCompatActivity {
+public class InviteUserActivityJava extends AppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -29,11 +29,27 @@ public class LoadConversationActivityJava extends AppCompatActivity {
             @Override
             public void onSuccess(@Nullable NexmoConversation conversation) {
                 Timber.d("Conversation loaded");
+
+                inviteUser(conversation, "userName");
             }
 
             @Override
             public void onError(@NonNull NexmoApiError apiError) {
                 Timber.d("Error: Unable to load conversation %s", apiError.getMessage());
+            }
+        });
+    }
+
+    private void inviteUser(NexmoConversation conversation, String userName) {
+        conversation.invite(userName, new NexmoRequestListener<String>() {
+            @Override
+            public void onSuccess(@Nullable String result) {
+                Timber.d("User invited " + result);
+            }
+
+            @Override
+            public void onError(@NonNull NexmoApiError apiError) {
+                Timber.d("Error: Unable to invite user " + apiError.getMessage());
             }
         });
     }
