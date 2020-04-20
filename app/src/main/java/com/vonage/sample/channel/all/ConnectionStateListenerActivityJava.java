@@ -9,7 +9,7 @@ import com.nexmo.client.NexmoClient;
 import com.nexmo.client.request_listener.NexmoConnectionListener;
 import timber.log.Timber;
 
-public class ConnectionStateActivityJava extends AppCompatActivity {
+public class ConnectionStateListenerActivityJava extends AppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {

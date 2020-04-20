@@ -13,5 +13,7 @@ class ConfigureIceServerUrlActivityKotlin : AppCompatActivity() {
         val nexmoClient = NexmoClient.Builder()
             .iceServerUrls(arrayOf("STUN1_URL"))
             .build(this)
+
+        // Now client instance can be retrieved by using NexmoClient.get()
     }
 }

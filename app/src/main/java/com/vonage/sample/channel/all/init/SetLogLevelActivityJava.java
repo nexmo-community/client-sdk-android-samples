@@ -17,5 +17,7 @@ public class SetLogLevelActivityJava extends AppCompatActivity {
         NexmoClient client = new NexmoClient.Builder()
                 .logLevel(eLogLevel.SENSITIVE)
                 .build(this);
+
+        // Now client instance can be retrieved by using NexmoClient.get()
     }
 }

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoClient
 import timber.log.Timber
 
-class ConnectionStateActivityKotlin : AppCompatActivity() {
+class ConnectionStateListenerActivityKotlin : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)

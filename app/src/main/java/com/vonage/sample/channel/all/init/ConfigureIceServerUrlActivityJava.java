@@ -15,5 +15,7 @@ public class ConfigureIceServerUrlActivityJava extends AppCompatActivity {
         NexmoClient client = new NexmoClient.Builder()
                 .iceServerUrls(new String[]{"STUN1_URL"})
                 .build(this);
+
+        // Now client instance can be retrieved by using NexmoClient.get()
     }
 }
