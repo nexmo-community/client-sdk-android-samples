@@ -10,6 +10,7 @@ import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
 
 class SendCustomEventActivityKotlin : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
