@@ -1,18 +1,77 @@
-[![maven-central](https://img.shields.io/maven-central/v/com.nexmo.android/client-sdk.svg)](https://repo.maven.apache.org/maven2/com/nexmo/android/client-sdk/)
-# Client Sdk Android Samples
-Various samples of Nexmo Android Client-SDK.
+# Nexmo Client SDK Android Samples
+Base configuration and various samples of Nexmo Android Client-SDK.
 
-## Client Initialization
+## Base configuration
 
-The best place to initialize the client is custom android [Application](https://developer.android.com/reference/android/app/Application) class eg. [BaseApplication.kt](app/src/main/java/com/vonage/sample/core/BaseApplication.kt).
+### Add dependency
 
-Client parameters can be configured during initialization:
+[![Android Nexmo Client-SDK version](https://img.shields.io/maven-central/v/com.nexmo.android/client-sdk.svg)](https://repo.maven.apache.org/maven2/com/nexmo/android/client-sdk/)
+
+Kotlin Gradle Script:
+```
+implementation("com.nexmo.android:client-sdk:x.y.z")
+```
+
+Groovy:
+```
+implementation 'com.nexmo.android:client-sdk:x.y.z'
+```
+
+### Initialize the client
+
+The best place to initialize the client is custom android [Application](https://developer.android.com/reference/android/app/Application) class:
+
+BaseApplication.kt
+```
+class BaseApplication : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        Timber.plant(Timber.DebugTree())
+
+        // Init the NexmoClient. You can retrieve NexmoClient instance latter by using NexmoClient.get()
+        NexmoClient.Builder().build(this)
+    }
+}
+```
+
+BaseApplication.java
+```
+public class BaseApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        // Init the NexmoClient. You can retrieve NexmoClient instance latter by using NexmoClient.get()
+        new NexmoClient.Builder().build(this);
+    }
+}
+```
+
+Now we need to use the `BaseApplication` class by adding it in the `AndroidManifest.xml` file:
+```
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.vonage.sample">
+
+    <application
+            android:name=".core.BaseApplication"
+            ...
+    </application>
+
+</manifest>
+```
+
+## Client configuration
+
+Client allows to configure multiple settings during initialization:
 - Basic client initialization ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/BasicConfigurationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/BasicConfigurationActivityJava.java))
 - Configure logging level ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/SetLogLevelActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/SetLogLevelActivityJava.java))
 - Configure data center ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureDataCenterActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureDataCenterActivityJava.java))
 - Configure server URL ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureIceServerUrlActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureIceServerUrlActivityJava.java))
 
-## General
+## General tasks
 
 - Login user ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/LoginUserActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/LoginUserActivityJava.java))
 - Listen for client connection status changes ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/ConnectionStateListenerActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/ConnectionStateListenerActivityJava.java))
