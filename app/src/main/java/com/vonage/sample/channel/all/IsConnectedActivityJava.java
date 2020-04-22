@@ -16,7 +16,7 @@ public class IsConnectedActivityJava extends AppCompatActivity {
         // No need for client initialization here. Client initialization is already done in BaseApplication class.
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
-
+        client.login("JWT token");
         Timber.d("isConnected: " + client.isConnected());
     }
 }

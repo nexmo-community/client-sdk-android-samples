@@ -42,6 +42,7 @@ class SeenReceiptActivityKotlin : AppCompatActivity() {
         // No need for client initialization here. Client initialization is already done in BaseApplication class.
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
+        client.login("JWT token")
         getConversation(client)
     }
 
