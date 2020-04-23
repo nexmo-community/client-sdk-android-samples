@@ -42,8 +42,8 @@ public class LeaveConversationActivityJava extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onError(@NonNull NexmoApiError nexmoApiError) {
-                            Timber.d("Error: Unable kick user ${apiError.message}");
+                        public void onError(@NonNull NexmoApiError apiError) {
+                            Timber.d("Error: Unable to kick user " + apiError.getMessage());
                         }
                     });
                 }
