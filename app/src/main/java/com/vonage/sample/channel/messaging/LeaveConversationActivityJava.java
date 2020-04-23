@@ -33,7 +33,6 @@ public class LeaveConversationActivityJava extends AppCompatActivity {
 
                 if (conversation.getAllMembers().size() > 0) {
                     NexmoMember member = conversation.getAllMembers().iterator().next();
-
                     conversation.kick(member, new NexmoRequestListener<Void>() {
                         @Override
                         public void onSuccess(@Nullable Void aVoid) {

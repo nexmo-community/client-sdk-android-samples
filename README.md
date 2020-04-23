@@ -2,7 +2,7 @@
 
 Repository contains Base [configuration](configuration.md) and various samples of using Nexmo Android Client-SDK.
 
-## Client configuration
+# Client configuration
 
 Client allows to configure multiple settings during initialization:
 - Basic client initialization ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/BasicConfigurationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/BasicConfigurationActivityJava.java))
@@ -10,21 +10,21 @@ Client allows to configure multiple settings during initialization:
 - Configure data center ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureDataCenterActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureDataCenterActivityJava.java))
 - Configure server URL ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureIceServerUrlActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/init/ConfigureIceServerUrlActivityJava.java))
 
-## General tasks
+# General tasks
 
 - Login user ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/LoginUserActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/LoginUserActivityJava.java))
 - Listen for client connection status changes ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/ConnectionStateListenerActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/ConnectionStateListenerActivityJava.java))
 - Check if is connected ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/IsConnectedActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/IsConnectedActivityJava.java))
 - Configure Firebase Messaging Service ([Kotlin](app/src/main/java/com/vonage/sample/channel/all/ClientFirebaseMessagingServiceKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/all/ClientFirebaseMessagingServiceJava.java))
 
-## Channels
+# Channels
 
 Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/in-app-messaging/overview) and [Voice](https://developer.nexmo.com/client-sdk/in-app-voice/overview) communication channels.
 
-### Messaging
+## Messaging
 
-Check the developer portal [documentation](https://developer.nexmo.com/client-sdk/in-app-messaging/overview),
-check the [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android) or review below examples:
+### Examples
+
 - Load conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationActivityJava.java))
 - Load conversation events([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationEventsActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationEventsActivityJava.java))
 - Send message ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SendMessageActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SendMessageActivityJava.java))
@@ -43,6 +43,18 @@ check the [code reference](https://developer.nexmo.com/client-sdk/sdk-documentat
 - Receive custom event ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveCustomEventActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveCustomEventActivityJava.java))
 - The event seen by another user ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SeenReceiptActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SeenReceiptActivityJava.java))
 
-### Voice
-Check the developer portal [documentation](https://developer.nexmo.com/client-sdk/in-app-voice/overview),
-check the [code reference](https://developer.nexmo.com/sdk/stitch/android/) or review below examples:
+### More
+
+- Documentation at [Nexmo portal documentation](https://developer.nexmo.com/client-sdk/in-app-messaging/overview)
+- Main interaction class: [NexmoCall](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoConversation.html)
+- Full [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android)
+
+## Voice
+
+### Examples
+
+### More
+
+- Documentation at [Nexmo portal documentation](https://developer.nexmo.com/client-sdk/in-app-voice/overview)
+- Main interaction class: [NexmoCall](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoCall.html)
+- Full [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android)
