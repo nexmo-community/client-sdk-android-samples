@@ -9,7 +9,7 @@ import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
 
-class LeaveConversationActivityKotlin : AppCompatActivity() {
+class JoinConversationActivityKotlin : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -25,19 +25,15 @@ class LeaveConversationActivityKotlin : AppCompatActivity() {
         client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
 
             override fun onSuccess(conversation: NexmoConversation?) {
-                val member = conversation?.allMembers?.firstOrNull()
+                conversation?.join("member name", object : NexmoRequestListener<String> {
+                    override fun onSuccess(string: String?) {
+                        Timber.d("User join success")
+                    }
 
-                member?.let {
-                    conversation.kick(it, object : NexmoRequestListener<Any> {
-                        override fun onSuccess(p0: Any?) {
-                            Timber.d("User kick success")
-                        }
-
-                        override fun onError(apiError: NexmoApiError) {
-                            Timber.d("Error: Unable to kick user ${apiError.message}")
-                        }
-                    })
-                }
+                    override fun onError(apiError: NexmoApiError) {
+                        Timber.d("Error: Unable join user ${apiError.message}")
+                    }
+                })
             }
 
             override fun onError(apiError: NexmoApiError) {

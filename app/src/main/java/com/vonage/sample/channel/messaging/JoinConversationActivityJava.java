@@ -7,12 +7,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.nexmo.client.NexmoClient;
 import com.nexmo.client.NexmoConversation;
-import com.nexmo.client.NexmoMember;
 import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
-public class LeaveConversationActivityJava extends AppCompatActivity {
+public class JoinConversationActivityJava extends AppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -30,22 +29,17 @@ public class LeaveConversationActivityJava extends AppCompatActivity {
             @Override
             public void onSuccess(@Nullable NexmoConversation conversation) {
                 Timber.d("Conversation loaded");
+                conversation.join("member name", new NexmoRequestListener<String>() {
+                    @Override
+                    public void onSuccess(@Nullable String string) {
+                        Timber.d("User joined");
+                    }
 
-                NexmoMember member = conversation.getAllMembers().iterator().next();
-
-                if (member != null) {
-                    conversation.kick(member, new NexmoRequestListener<Void>() {
-                        @Override
-                        public void onSuccess(@Nullable Void aVoid) {
-                            Timber.d("User kick success");
-                        }
-
-                        @Override
-                        public void onError(@NonNull NexmoApiError apiError) {
-                            Timber.d("Error: Unable to kick user " + apiError.getMessage());
-                        }
-                    });
-                }
+                    @Override
+                    public void onError(@NonNull NexmoApiError apiError) {
+                        Timber.d("Error: Unable to join user " + apiError.getMessage());
+                    }
+                });
             }
 
             @Override
