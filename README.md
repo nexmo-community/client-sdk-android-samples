@@ -1,67 +1,6 @@
-# Nexmo Client SDK Android Samples
-Base configuration and various samples of Nexmo Android Client-SDK.
+# Nexmo Android Client SDK Samples
 
-## Base configuration
-
-### Add dependency
-
-[![Android Nexmo Client-SDK version](https://img.shields.io/maven-central/v/com.nexmo.android/client-sdk.svg)](https://repo.maven.apache.org/maven2/com/nexmo/android/client-sdk/)
-
-Kotlin Gradle Script:
-```
-implementation("com.nexmo.android:client-sdk:x.y.z")
-```
-
-Groovy:
-```
-implementation 'com.nexmo.android:client-sdk:x.y.z'
-```
-
-### Initialize the client
-
-The best place to initialize the client is custom android [Application](https://developer.android.com/reference/android/app/Application) class:
-
-BaseApplication.kt
-```
-class BaseApplication : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-
-        Timber.plant(Timber.DebugTree())
-
-        // Init the NexmoClient. You can retrieve NexmoClient instance latter by using NexmoClient.get()
-        NexmoClient.Builder().build(this)
-    }
-}
-```
-
-BaseApplication.java
-```
-public class BaseApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        // Init the NexmoClient. You can retrieve NexmoClient instance latter by using NexmoClient.get()
-        new NexmoClient.Builder().build(this);
-    }
-}
-```
-
-Now we need to use the `BaseApplication` class by adding it in the `AndroidManifest.xml` file:
-```
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.vonage.sample">
-
-    <application
-            android:name=".core.BaseApplication"
-            ...
-    </application>
-
-</manifest>
-```
+Repository contains Base [configuration](configuration.md) and various samples of using Nexmo Android Client-SDK.
 
 ## Client configuration
 
