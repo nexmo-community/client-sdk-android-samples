@@ -25,9 +25,7 @@ class LeaveConversationActivityKotlin : AppCompatActivity() {
         client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
 
             override fun onSuccess(conversation: NexmoConversation?) {
-                val member = conversation?.allMembers?.firstOrNull()
-
-                member?.let {
+                conversation?.allMembers?.firstOrNull()?.let {
                     conversation.kick(it, object : NexmoRequestListener<Any> {
                         override fun onSuccess(p0: Any?) {
                             Timber.d("User kick success")
