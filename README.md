@@ -1,6 +1,6 @@
 # Nexmo Android Client SDK Samples
 
-Repository contains Base [configuration](configuration.md) and various samples of using Nexmo Android Client-SDK.
+Repository contains Base [configuration](configuration.md) and various samples of using Nexmo [Android Client-SDK](https://developer.nexmo.com/client-sdk/overview).
 
 # Client configuration
 
