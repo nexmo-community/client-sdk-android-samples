@@ -57,6 +57,7 @@ The capabilities of `in-app call` are limited, because they doesn't utilize [Nex
 
 - Start in-app call - ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityJava.java))
 - Start server managed call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/StartServerManagedCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/StartServerManagedCallActivityJava.java))
+- Receive call events ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/ReceiveCallEventsActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/ReceiveCallEventsActivityJava.java))
 
 ### More
 
