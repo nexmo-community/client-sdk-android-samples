@@ -13,7 +13,7 @@ import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
-public class AcceptUserInvitationActivityJava extends AppCompatActivity {
+public class AcceptUserInvitationAndJoinConversationActivityJava extends AppCompatActivity {
 
     private NexmoConversation conversation;
     private NexmoRequestListener<String> joinConversationListener = new NexmoRequestListener<String>() {

@@ -11,7 +11,7 @@ import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
 
-class AcceptUserInvitationActivityKotlin : AppCompatActivity() {
+class AcceptUserInvitationAndJoinConversationActivityKotlin : AppCompatActivity() {
 
     private var conversation: NexmoConversation? = null
 
@@ -53,7 +53,7 @@ class AcceptUserInvitationActivityKotlin : AppCompatActivity() {
                 Timber.d("Conversation loaded")
 
                 conversation?.addMemberEventListener(memberEventListener)
-                this@AcceptUserInvitationActivityKotlin.conversation = conversation
+                this@AcceptUserInvitationAndJoinConversationActivityKotlin.conversation = conversation
             }
 
             override fun onError(apiError: NexmoApiError) {
