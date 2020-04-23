@@ -53,6 +53,8 @@ Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 
 ### Examples
 
+- Start in-app call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityJava.java))
+
 ### More
 
 - Documentation at [Nexmo portal documentation](https://developer.nexmo.com/client-sdk/in-app-voice/overview)
