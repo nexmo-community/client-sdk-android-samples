@@ -31,9 +31,9 @@ public class LeaveConversationActivityJava extends AppCompatActivity {
             public void onSuccess(@Nullable NexmoConversation conversation) {
                 Timber.d("Conversation loaded");
 
-                NexmoMember member = conversation.getAllMembers().iterator().next();
+                if (conversation.getAllMembers().size() > 0) {
+                    NexmoMember member = conversation.getAllMembers().iterator().next();
 
-                if (member != null) {
                     conversation.kick(member, new NexmoRequestListener<Void>() {
                         @Override
                         public void onSuccess(@Nullable Void aVoid) {
