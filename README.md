@@ -21,7 +21,7 @@ Client allows to configure multiple settings during initialization:
 
 Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/in-app-messaging/overview) and [Voice](https://developer.nexmo.com/client-sdk/in-app-voice/overview) communication channels.
 
-## Messaging
+## Messagings
 
 ### Examples
 
@@ -51,9 +51,12 @@ Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 
 ## Voice
 
+The capabilities of `in-app call` are limited, because they doesn't utilize [Nexmo Voice API](https://developer.nexmo.com/voice/voice-api/overview). This method is recommended mostly for onboarding. Later, it is recommended to use a `server managed call`.
+
 ### Examples
 
-- Start in-app call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityJava.java))
+- Start in-app call - ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityJava.java))
+- Start server managed call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/StartServerManagedCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/StartServerManagedCallActivityJava.java))
 
 ### More
 
