@@ -40,7 +40,7 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
     }
 
     private void getConversationEvents(NexmoConversation conversation) {
-        conversation.getEvents(100, NexmoPageOrder.NexmoMPageOrderAsc, new NexmoRequestListener<NexmoEventsPage>() {
+        conversation.getEvents(100, NexmoPageOrder.NexmoMPageOrderAsc, null, new NexmoRequestListener<NexmoEventsPage>() {
             @Override
             public void onSuccess(@Nullable NexmoEventsPage eventsPage) {
                 processEvents(eventsPage.getPageResponse().getData());
