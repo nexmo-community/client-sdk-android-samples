@@ -13,17 +13,17 @@ import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
-public class MuteCallMemberActivityJava extends AppCompatActivity {
+public class UnmuteActivityJava extends AppCompatActivity {
 
     private NexmoRequestListener<NexmoCallMember> muteListener = new NexmoRequestListener<NexmoCallMember>() {
         @Override
         public void onSuccess(NexmoCallMember callMember) {
-            Timber.d("Member muted " + callMember);
+            Timber.d("Member unmuted " + callMember);
         }
 
         @Override
         public void onError(NexmoApiError apiError) {
-            Timber.d("Error: Mute member " + apiError.getMessage());
+            Timber.d("Error: Unmute member " + apiError.getMessage());
         }
     };
     private NexmoRequestListener<NexmoCall> callListener = new NexmoRequestListener<NexmoCall>() {
@@ -33,13 +33,13 @@ public class MuteCallMemberActivityJava extends AppCompatActivity {
 
             // Mute member
             NexmoCallMember callMember = call.getCallMembers().iterator().next();
-            callMember.mute(true, muteListener);
+            callMember.mute(false, muteListener);
 
             // Mute my member
-            call.getMyCallMember().mute(true, muteListener);
+            call.getMyCallMember().mute(false, muteListener);
 
             // Mute whole call
-            call.mute(true);
+            call.mute(false);
         }
 
         @Override
@@ -56,6 +56,8 @@ public class MuteCallMemberActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
+
+
         client.call("123456", NexmoCallHandler.SERVER, callListener);
     }
 }

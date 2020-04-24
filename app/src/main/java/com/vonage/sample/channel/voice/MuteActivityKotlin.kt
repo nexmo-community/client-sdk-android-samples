@@ -11,7 +11,7 @@ import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
 
-class MuteCallActivityKotlin : AppCompatActivity() {
+class MuteActivityKotlin : AppCompatActivity() {
 
     private val callListener = object : NexmoRequestListener<NexmoCall> {
         override fun onSuccess(call: NexmoCall?) {

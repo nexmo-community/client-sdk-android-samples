@@ -13,7 +13,7 @@ import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
-public class MuteCallMyMemberActivityJava extends AppCompatActivity {
+public class MuteActivityJava extends AppCompatActivity {
 
     private NexmoRequestListener<NexmoCallMember> muteListener = new NexmoRequestListener<NexmoCallMember>() {
         @Override
