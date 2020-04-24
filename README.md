@@ -62,6 +62,8 @@ The capabilities of `in-app call` are limited, because they doesn't utilize [Nex
 - Hang up call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/HangupCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/HangupCallActivityJava.java))
 - Mute call / member / my member ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/MuteActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/MuteActivityJava.java))
 - Unmute call / member / my member ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/UnmuteActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/UnmuteActivityJava.java))
+- Enable Earmuff / member / my member ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/EnableEarmuffActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/EnableEarmuffActivityJava.java))
+- Disable Earmuff / member / my member ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/DisableEarmuffActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/DisableEarmuffActivityJava.java))
 
 ### More
 

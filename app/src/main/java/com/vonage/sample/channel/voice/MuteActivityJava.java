@@ -5,10 +5,7 @@ import android.os.PersistableBundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.nexmo.client.NexmoCall;
-import com.nexmo.client.NexmoCallHandler;
-import com.nexmo.client.NexmoCallMember;
-import com.nexmo.client.NexmoClient;
+import com.nexmo.client.*;
 import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
@@ -26,10 +23,27 @@ public class MuteActivityJava extends AppCompatActivity {
             Timber.d("Error: Mute member " + apiError.getMessage());
         }
     };
+    private NexmoCallEventListener callEventListener = new NexmoCallEventListener() {
+        @Override
+        public void onMuteChanged(NexmoMediaActionState muteState, NexmoCallMember callMember) {
+            Timber.d("NexmoMediaActionState(): muteState: " + muteState + ", callMember: " + callMember);
+        }
+
+        @Override
+        public void onMemberStatusUpdated(NexmoCallMemberStatus $memberStatus, NexmoCallMember callMember) {}
+
+        @Override
+        public void onEarmuffChanged(NexmoMediaActionState earmuffState, NexmoCallMember callMember) {}
+
+        @Override
+        public void onDTMF(String digit, NexmoCallMember callMember) {}
+    };
     private NexmoRequestListener<NexmoCall> callListener = new NexmoRequestListener<NexmoCall>() {
         @Override
         public void onSuccess(@Nullable NexmoCall call) {
             Timber.d("Call started: " + call.toString());
+
+            call.addCallEventListener(callEventListener);
 
             // Mute member
             NexmoCallMember callMember = call.getCallMembers().iterator().next();

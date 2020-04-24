@@ -14,7 +14,7 @@ import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
 
-class MuteActivityKotlin : AppCompatActivity() {
+class EnableEarmuffActivityKotlin : AppCompatActivity() {
 
     private val callListener = object : NexmoRequestListener<NexmoCall> {
         override fun onSuccess(call: NexmoCall?) {
@@ -22,14 +22,11 @@ class MuteActivityKotlin : AppCompatActivity() {
 
             call?.addCallEventListener(callEventListener)
 
-            // Mute member
-            call?.callMembers?.firstOrNull()?.mute(true, muteListener)
+            // Earmuff member
+            call?.callMembers?.firstOrNull()?.earmuff(true, earmuffListener)
 
-            // Mute my member
-            call?.myCallMember?.mute(true, muteListener)
-
-            // Mute whole call
-            call?.mute(true)
+            // Earmuff my member
+            call?.myCallMember?.earmuff(true, earmuffListener)
         }
 
         override fun onError(apiError: NexmoApiError) {
@@ -38,24 +35,24 @@ class MuteActivityKotlin : AppCompatActivity() {
     }
 
     private val callEventListener = object : NexmoCallEventListener {
-        override fun onMuteChanged(muteState: NexmoMediaActionState?, callMember: NexmoCallMember?) {
-            Timber.d("NexmoMediaActionState(): muteState: $muteState, callMember: $callMember")
-        }
-
         override fun onDTMF(digit: String?, callMember: NexmoCallMember?) {}
 
         override fun onMemberStatusUpdated(memberStatus: NexmoCallMemberStatus?, callMember: NexmoCallMember?) {}
 
-        override fun onEarmuffChanged(earmuffState: NexmoMediaActionState?, callMember: NexmoCallMember?) {}
+        override fun onMuteChanged(muteState: NexmoMediaActionState?, callMember: NexmoCallMember?) {}
+
+        override fun onEarmuffChanged(earmuffState: NexmoMediaActionState?, callMember: NexmoCallMember?) {
+            Timber.d("onEarmuffChanged(): earmuffState: $earmuffState, callMember: $callMember")
+        }
     }
 
-    private val muteListener = object : NexmoRequestListener<NexmoCallMember> {
+    private val earmuffListener = object : NexmoRequestListener<NexmoCallMember> {
         override fun onSuccess(callMember: NexmoCallMember?) {
-            Timber.d("Member muted $callMember")
+            Timber.d("Member earmuff enabled $callMember")
         }
 
         override fun onError(apiError: NexmoApiError) {
-            Timber.d("Error: Mute member ${apiError.message}")
+            Timber.d("Error: Earmuff member ${apiError.message}")
         }
     }
 

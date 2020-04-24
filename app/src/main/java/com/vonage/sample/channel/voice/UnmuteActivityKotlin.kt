@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoCall
+import com.nexmo.client.NexmoCallEventListener
 import com.nexmo.client.NexmoCallHandler
 import com.nexmo.client.NexmoCallMember
+import com.nexmo.client.NexmoCallMemberStatus
 import com.nexmo.client.NexmoClient
+import com.nexmo.client.NexmoMediaActionState
 import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
@@ -16,6 +19,8 @@ class UnmuteActivityKotlin : AppCompatActivity() {
     private val callListener = object : NexmoRequestListener<NexmoCall> {
         override fun onSuccess(call: NexmoCall?) {
             Timber.d("Call started: ${call.toString()}")
+
+            call?.addCallEventListener(callEventListener)
 
             // Mute member
             call?.callMembers?.firstOrNull()?.mute(false, muteListener)
@@ -38,8 +43,20 @@ class UnmuteActivityKotlin : AppCompatActivity() {
         }
 
         override fun onError(apiError: NexmoApiError) {
-            Timber.d("Error: Unute member ${apiError.message}")
+            Timber.d("Error: Unmute member ${apiError.message}")
         }
+    }
+
+    private val callEventListener = object : NexmoCallEventListener {
+        override fun onMuteChanged(muteState: NexmoMediaActionState?, callMember: NexmoCallMember?) {
+            Timber.d("NexmoMediaActionState(): muteState: $muteState, callMember: $callMember")
+        }
+
+        override fun onDTMF(digit: String?, callMember: NexmoCallMember?) {}
+
+        override fun onMemberStatusUpdated(memberStatus: NexmoCallMemberStatus?, callMember: NexmoCallMember?) {}
+
+        override fun onEarmuffChanged(earmuffState: NexmoMediaActionState?, callMember: NexmoCallMember?) {}
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
