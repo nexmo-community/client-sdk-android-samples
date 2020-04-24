@@ -27,6 +27,7 @@ public class EnableEarmuffActivityJava extends AppCompatActivity {
         @Override
         public void onDTMF(String digit, NexmoCallMember callMember) {}
     };
+
     private NexmoRequestListener<NexmoCallMember> earmuffListener = new NexmoRequestListener<NexmoCallMember>() {
         @Override
         public void onSuccess(NexmoCallMember callMember) {
@@ -38,6 +39,7 @@ public class EnableEarmuffActivityJava extends AppCompatActivity {
             Timber.d("Error: Earmuff member " + apiError.getMessage());
         }
     };
+
     private NexmoRequestListener<NexmoCall> callListener = new NexmoRequestListener<NexmoCall>() {
         @Override
         public void onSuccess(@Nullable NexmoCall call) {

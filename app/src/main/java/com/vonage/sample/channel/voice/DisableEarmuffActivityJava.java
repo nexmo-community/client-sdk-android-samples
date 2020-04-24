@@ -10,6 +10,7 @@ import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
+
 public class DisableEarmuffActivityJava extends AppCompatActivity {
 
     private NexmoCallEventListener callEventListener = new NexmoCallEventListener() {
@@ -27,6 +28,7 @@ public class DisableEarmuffActivityJava extends AppCompatActivity {
         @Override
         public void onDTMF(String digit, NexmoCallMember callMember) {}
     };
+
     private NexmoRequestListener<NexmoCallMember> earmuffListener = new NexmoRequestListener<NexmoCallMember>() {
         @Override
         public void onSuccess(NexmoCallMember callMember) {
@@ -38,6 +40,7 @@ public class DisableEarmuffActivityJava extends AppCompatActivity {
             Timber.d("Error: Earmuff member " + apiError.getMessage());
         }
     };
+
     private NexmoRequestListener<NexmoCall> callListener = new NexmoRequestListener<NexmoCall>() {
         @Override
         public void onSuccess(@Nullable NexmoCall call) {
@@ -70,3 +73,4 @@ public class DisableEarmuffActivityJava extends AppCompatActivity {
         client.call("123456", NexmoCallHandler.SERVER, callListener);
     }
 }
+
