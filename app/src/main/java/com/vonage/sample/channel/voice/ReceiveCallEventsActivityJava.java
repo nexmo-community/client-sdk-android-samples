@@ -34,6 +34,7 @@ public class ReceiveCallEventsActivityJava extends AppCompatActivity {
             Timber.d("onDTMF(): digit:" + digit + ", callMember: " + callMember);
         }
     };
+
     private NexmoRequestListener<NexmoCall> callListener = new NexmoRequestListener<NexmoCall>() {
         @Override
         public void onSuccess(@Nullable NexmoCall nexmoCall) {
