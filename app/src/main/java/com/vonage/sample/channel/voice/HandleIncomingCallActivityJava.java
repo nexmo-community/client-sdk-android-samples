@@ -2,19 +2,19 @@ package com.vonage.sample.channel.voice;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.nexmo.client.NexmoCall;
 import com.nexmo.client.NexmoClient;
 import com.nexmo.client.NexmoIncomingCallListener;
+import timber.log.Timber;
 
 public class HandleIncomingCallActivityJava extends AppCompatActivity {
 
     private NexmoIncomingCallListener incomingCallListener = new NexmoIncomingCallListener() {
         @Override
         public void onIncomingCall(NexmoCall call) {
-            Log.d("TAG", "Incoming call " + call);
+            Timber.d("Incoming call " + call);
         }
     };
 

@@ -2,15 +2,15 @@ package com.vonage.sample.channel.voice
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoClient
 import com.nexmo.client.NexmoIncomingCallListener
+import timber.log.Timber
 
 class HandleIncomingCallActivityKotlin : AppCompatActivity() {
 
     private val incomingCallListener = NexmoIncomingCallListener {
-        Log.d("TAG", "Incoming call $it")
+        Timber.d("Incoming call $it")
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
