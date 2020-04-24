@@ -9,7 +9,7 @@ import com.nexmo.client.NexmoClient;
 import com.nexmo.client.NexmoIncomingCallListener;
 import timber.log.Timber;
 
-public class HandleIncomingCallActivityJava extends AppCompatActivity {
+public class ReceiveIncomingCallActivityJava extends AppCompatActivity {
 
     private NexmoIncomingCallListener incomingCallListener = new NexmoIncomingCallListener() {
         @Override
@@ -26,7 +26,6 @@ public class HandleIncomingCallActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-
         client.addIncomingCallListener(incomingCallListener);
     }
 }
