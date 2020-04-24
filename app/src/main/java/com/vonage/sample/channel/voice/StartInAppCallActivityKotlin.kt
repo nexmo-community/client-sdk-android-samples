@@ -13,8 +13,8 @@ import timber.log.Timber
 class StartInAppCallActivityKotlin : AppCompatActivity() {
 
     private val callListener = object : NexmoRequestListener<NexmoCall> {
-        override fun onSuccess(nexmoCall: NexmoCall?) {
-            Timber.d("Call started: ${nexmoCall.toString()}")
+        override fun onSuccess(call: NexmoCall?) {
+            Timber.d("Call started: ${call.toString()}")
         }
 
         override fun onError(apiError: NexmoApiError) {

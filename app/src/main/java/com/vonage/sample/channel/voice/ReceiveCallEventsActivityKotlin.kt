@@ -2,7 +2,6 @@ package com.vonage.sample.channel.voice
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoCall
 import com.nexmo.client.NexmoCallEventListener
@@ -18,10 +17,10 @@ import timber.log.Timber
 class ReceiveCallEventsActivityKotlin : AppCompatActivity() {
 
     private val callListener = object : NexmoRequestListener<NexmoCall> {
-        override fun onSuccess(nexmoCall: NexmoCall?) {
-            Log.d("TAG", "Call started: " + nexmoCall.toString())
+        override fun onSuccess(call: NexmoCall?) {
+            Timber.d("Call started: " + call.toString())
 
-            nexmoCall?.addCallEventListener(callEventListener)
+            call?.addCallEventListener(callEventListener)
         }
 
         override fun onError(apiError: NexmoApiError) {

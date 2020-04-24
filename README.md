@@ -59,7 +59,13 @@ The capabilities of `in-app call` are limited, because they doesn't utilize [Nex
 - Start server managed call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/StartServerManagedCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/StartServerManagedCallActivityJava.java))
 - Receive call events ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/ReceiveCallEventsActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/ReceiveCallEventsActivityJava.java))
 - Answer incoming call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/AnswerIncomingCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/AnswerIncomingCallActivityJava.java))
-- Hang u call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/HangupCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/HangupCallActivityJava.java))
+- Hang up call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/HangupCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/HangupCallActivityJava.java))
+- Mute call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/MuteCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/MuteCallActivityJava.java))
+- Unmute call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/UnmuteCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/UnmuteCallActivityJava.java))
+- Mute call member ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/MuteCallMemberActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/MuteCallMemberActivityJava.java))
+- Unmute call member ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/UnmuteCallMemberActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/UnmuteCallMemberActivityJava.java))
+- Mute call my member ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/MuteCallMyMemberActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/MuteCallMyMemberActivityJava.java))
+- Unmute call my member ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/UnmuteCallMyMemberActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/UnmuteCallMyMemberActivityJava.java))
 
 ### More
 

@@ -2,29 +2,29 @@ package com.vonage.sample.channel.voice
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoCall
 import com.nexmo.client.NexmoClient
 import com.nexmo.client.NexmoIncomingCallListener
 import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
+import timber.log.Timber
 
 class HangupCallActivityKotlin : AppCompatActivity() {
 
     private val incomingCallListener = NexmoIncomingCallListener {
-        Log.d("TAG", "Incoming call $it")
+        Timber.d("Incoming call $it")
 
         it.hangup(hangupCallListener)
     }
 
     private val hangupCallListener = object : NexmoRequestListener<NexmoCall> {
-        override fun onSuccess(nexmoCall: NexmoCall?) {
-            Log.d("TAG", "Call hangup: $nexmoCall")
+        override fun onSuccess(call: NexmoCall?) {
+            Timber.d("Call hangup: $call")
         }
 
         override fun onError(apiError: NexmoApiError) {
-            Log.d("TAG", "Error: Unable to hangup call ${apiError.message}")
+            Timber.d("Error: Unable to hangup call ${apiError.message}")
         }
     }
 
