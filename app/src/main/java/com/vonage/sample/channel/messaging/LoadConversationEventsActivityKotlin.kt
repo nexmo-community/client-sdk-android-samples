@@ -40,7 +40,7 @@ class LoadConversationEventsActivityKotlin : AppCompatActivity() {
 
     private val conversationEventsListener = object : NexmoRequestListener<NexmoEventsPage> {
         override fun onSuccess(nexmoEventsPage: NexmoEventsPage?) {
-            nexmoEventsPage?.pageResponse?.data?.let {
+            nexmoEventsPage?.data?.let {
                 processEvents(it.toList())
             }
         }

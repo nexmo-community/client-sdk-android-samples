@@ -25,6 +25,7 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
             Timber.d("Error: Unable to load conversation events %s", apiError.getMessage());
         }
     };
+
     private NexmoRequestListener<NexmoConversation> conversationListener = new NexmoRequestListener<NexmoConversation>() {
         @Override
         public void onSuccess(@Nullable NexmoConversation conversation) {
