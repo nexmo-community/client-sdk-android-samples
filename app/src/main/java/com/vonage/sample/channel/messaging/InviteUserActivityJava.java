@@ -13,6 +13,31 @@ import timber.log.Timber;
 
 public class InviteUserActivityJava extends AppCompatActivity {
 
+    private NexmoRequestListener<String> inviteUserListener = new NexmoRequestListener<String>() {
+        @Override
+        public void onSuccess(@Nullable String result) {
+            Timber.d("User invited " + result);
+        }
+
+        @Override
+        public void onError(@NonNull NexmoApiError apiError) {
+            Timber.d("Error: Unable to invite user " + apiError.getMessage());
+        }
+    };
+    private NexmoRequestListener<NexmoConversation> conversationListener = new NexmoRequestListener<NexmoConversation>() {
+        @Override
+        public void onSuccess(@Nullable NexmoConversation conversation) {
+            Timber.d("Conversation loaded");
+
+            conversation.invite("userName", inviteUserListener);
+        }
+
+        @Override
+        public void onError(@NonNull NexmoApiError apiError) {
+            Timber.d("Error: Unable to load conversation %s", apiError.getMessage());
+        }
+    };
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -21,36 +46,6 @@ public class InviteUserActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-        getConversation(client);
-    }
-
-    private void getConversation(NexmoClient client) {
-        client.getConversation("CONVERSATION_ID", new NexmoRequestListener<NexmoConversation>() {
-            @Override
-            public void onSuccess(@Nullable NexmoConversation conversation) {
-                Timber.d("Conversation loaded");
-
-                inviteUser(conversation, "userName");
-            }
-
-            @Override
-            public void onError(@NonNull NexmoApiError apiError) {
-                Timber.d("Error: Unable to load conversation %s", apiError.getMessage());
-            }
-        });
-    }
-
-    private void inviteUser(NexmoConversation conversation, String userName) {
-        conversation.invite(userName, new NexmoRequestListener<String>() {
-            @Override
-            public void onSuccess(@Nullable String result) {
-                Timber.d("User invited " + result);
-            }
-
-            @Override
-            public void onError(@NonNull NexmoApiError apiError) {
-                Timber.d("Error: Unable to invite user " + apiError.getMessage());
-            }
-        });
+        client.getConversation("CONVERSATION_ID", conversationListener);
     }
 }

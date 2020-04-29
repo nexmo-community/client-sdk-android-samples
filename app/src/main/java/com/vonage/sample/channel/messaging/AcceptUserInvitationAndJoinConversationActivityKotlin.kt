@@ -15,6 +15,19 @@ class AcceptUserInvitationAndJoinConversationActivityKotlin : AppCompatActivity(
 
     private var conversation: NexmoConversation? = null
 
+    private val conversationListener = object : NexmoRequestListener<NexmoConversation> {
+        override fun onSuccess(conversation: NexmoConversation?) {
+            Timber.d("Conversation loaded")
+
+            conversation?.addMemberEventListener(memberEventListener)
+            this@AcceptUserInvitationAndJoinConversationActivityKotlin.conversation = conversation
+        }
+
+        override fun onError(apiError: NexmoApiError) {
+            Timber.d("Error: Unable to load conversation ${apiError.message}")
+        }
+    }
+
     private val memberEventListener = object : NexmoMemberEventListener {
         override fun onMemberInvited(memberEvent: NexmoMemberEvent) {
             // Join user to the conversation (accept the invitation)
@@ -43,22 +56,6 @@ class AcceptUserInvitationAndJoinConversationActivityKotlin : AppCompatActivity(
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
-        getConversation(client)
-    }
-
-    private fun getConversation(client: NexmoClient) {
-        client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
-
-            override fun onSuccess(conversation: NexmoConversation?) {
-                Timber.d("Conversation loaded")
-
-                conversation?.addMemberEventListener(memberEventListener)
-                this@AcceptUserInvitationAndJoinConversationActivityKotlin.conversation = conversation
-            }
-
-            override fun onError(apiError: NexmoApiError) {
-                Timber.d("Error: Unable to load conversation ${apiError.message}")
-            }
-        })
+        client.getConversation("CONVERSATION_ID", conversationListener)
     }
 }

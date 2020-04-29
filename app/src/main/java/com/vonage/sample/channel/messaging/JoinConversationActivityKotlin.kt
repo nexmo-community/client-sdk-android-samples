@@ -11,6 +11,26 @@ import timber.log.Timber
 
 class JoinConversationActivityKotlin : AppCompatActivity() {
 
+    private val conversationListener = object : NexmoRequestListener<NexmoConversation> {
+        override fun onSuccess(conversation: NexmoConversation?) {
+            conversation?.join("member name", joinConversationListener)
+        }
+
+        override fun onError(apiError: NexmoApiError) {
+            Timber.d("Error: Unable to load conversation ${apiError.message}")
+        }
+    }
+
+    private val joinConversationListener = object : NexmoRequestListener<String> {
+        override fun onSuccess(string: String?) {
+            Timber.d("User join success")
+        }
+
+        override fun onError(apiError: NexmoApiError) {
+            Timber.d("Error: Unable join user ${apiError.message}")
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
@@ -18,27 +38,6 @@ class JoinConversationActivityKotlin : AppCompatActivity() {
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
-        getConversation(client)
-    }
-
-    private fun getConversation(client: NexmoClient) {
-        client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
-
-            override fun onSuccess(conversation: NexmoConversation?) {
-                conversation?.join("member name", object : NexmoRequestListener<String> {
-                    override fun onSuccess(string: String?) {
-                        Timber.d("User join success")
-                    }
-
-                    override fun onError(apiError: NexmoApiError) {
-                        Timber.d("Error: Unable join user ${apiError.message}")
-                    }
-                })
-            }
-
-            override fun onError(apiError: NexmoApiError) {
-                Timber.d("Error: Unable to load conversation ${apiError.message}")
-            }
-        })
+        client.getConversation("CONVERSATION_ID", conversationListener)
     }
 }

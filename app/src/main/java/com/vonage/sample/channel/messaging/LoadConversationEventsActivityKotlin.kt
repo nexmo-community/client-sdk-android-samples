@@ -21,6 +21,35 @@ import timber.log.Timber
 
 class LoadConversationEventsActivityKotlin : AppCompatActivity() {
 
+    private val conversationListener = object : NexmoRequestListener<NexmoConversation> {
+        override fun onSuccess(conversation: NexmoConversation?) {
+            Timber.d("Conversation loaded")
+
+            conversation?.getEvents(
+                100,
+                NexmoPageOrder.NexmoMPageOrderAsc,
+                null,
+                conversationEventsListener
+            )
+        }
+
+        override fun onError(apiError: NexmoApiError) {
+            Timber.d("Error: Unable to load conversation ${apiError.message}")
+        }
+    }
+
+    private val conversationEventsListener = object : NexmoRequestListener<NexmoEventsPage> {
+        override fun onSuccess(nexmoEventsPage: NexmoEventsPage?) {
+            nexmoEventsPage?.pageResponse?.data?.let {
+                processEvents(it.toList())
+            }
+        }
+
+        override fun onError(apiError: NexmoApiError) {
+            Timber.d("Error: Unable to load conversation events ${apiError.message}")
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
@@ -28,38 +57,7 @@ class LoadConversationEventsActivityKotlin : AppCompatActivity() {
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
-        getConversation(client)
-    }
-
-    private fun getConversation(client: NexmoClient) {
-        client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
-            override fun onSuccess(conversation: NexmoConversation?) {
-                Timber.d("Conversation loaded")
-                conversation?.let { getConversationEvents(it) }
-            }
-
-            override fun onError(apiError: NexmoApiError) {
-                Timber.d("Error: Unable to load conversation ${apiError.message}")
-            }
-        })
-    }
-
-    private fun getConversationEvents(conversation: NexmoConversation) {
-        conversation.getEvents(
-            100,
-            NexmoPageOrder.NexmoMPageOrderAsc,
-            null,
-            object : NexmoRequestListener<NexmoEventsPage> {
-                override fun onSuccess(nexmoEventsPage: NexmoEventsPage?) {
-                    nexmoEventsPage?.pageResponse?.data?.let {
-                        processEvents(it.toList())
-                    }
-                }
-
-                override fun onError(apiError: NexmoApiError) {
-                    Timber.d("Error: Unable to load conversation events ${apiError.message}")
-                }
-            })
+        client.getConversation("CONVERSATION_ID", conversationListener)
     }
 
     private fun processEvents(events: List<NexmoEvent>) {

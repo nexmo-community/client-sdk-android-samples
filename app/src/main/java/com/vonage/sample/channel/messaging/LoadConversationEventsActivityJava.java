@@ -14,6 +14,29 @@ import java.util.Collection;
 
 public class LoadConversationEventsActivityJava extends AppCompatActivity {
 
+    private NexmoRequestListener<NexmoEventsPage> conversationEventsListener = new NexmoRequestListener<NexmoEventsPage>() {
+        @Override
+        public void onSuccess(@Nullable NexmoEventsPage eventsPage) {
+            processEvents(eventsPage.getData());
+        }
+
+        @Override
+        public void onError(@NonNull NexmoApiError apiError) {
+            Timber.d("Error: Unable to load conversation events %s", apiError.getMessage());
+        }
+    };
+    private NexmoRequestListener<NexmoConversation> conversationListener = new NexmoRequestListener<NexmoConversation>() {
+        @Override
+        public void onSuccess(@Nullable NexmoConversation conversation) {
+            conversation.getEvents(100, NexmoPageOrder.NexmoMPageOrderAsc, null, conversationEventsListener);
+        }
+
+        @Override
+        public void onError(@NonNull NexmoApiError apiError) {
+            Timber.d("Error: Unable to load conversation %s", apiError.getMessage());
+        }
+    };
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -22,35 +45,7 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-        getConversation(client);
-    }
-
-    private void getConversation(NexmoClient client) {
-        client.getConversation("CONVERSATION_ID", new NexmoRequestListener<NexmoConversation>() {
-            @Override
-            public void onSuccess(@Nullable NexmoConversation conversation) {
-                getConversationEvents(conversation);
-            }
-
-            @Override
-            public void onError(@NonNull NexmoApiError apiError) {
-                Timber.d("Error: Unable to load conversation %s", apiError.getMessage());
-            }
-        });
-    }
-
-    private void getConversationEvents(NexmoConversation conversation) {
-        conversation.getEvents(100, NexmoPageOrder.NexmoMPageOrderAsc, null, new NexmoRequestListener<NexmoEventsPage>() {
-            @Override
-            public void onSuccess(@Nullable NexmoEventsPage eventsPage) {
-                processEvents(eventsPage.getPageResponse().getData());
-            }
-
-            @Override
-            public void onError(@NonNull NexmoApiError apiError) {
-                Timber.d("Error: Unable to load conversation events %s", apiError.getMessage());
-            }
-        });
+        client.getConversation("CONVERSATION_ID", conversationListener);
     }
 
     private void processEvents(Collection<NexmoEvent> events) {

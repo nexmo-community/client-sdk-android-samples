@@ -13,6 +13,18 @@ import timber.log.Timber;
 
 public class LoadConversationActivityJava extends AppCompatActivity {
 
+    private NexmoRequestListener<NexmoConversation> conversationListener = new NexmoRequestListener<NexmoConversation>() {
+        @Override
+        public void onSuccess(@Nullable NexmoConversation conversation) {
+            Timber.d("Conversation loaded");
+        }
+
+        @Override
+        public void onError(@NonNull NexmoApiError apiError) {
+            Timber.d("Error: Unable to load conversation %s", apiError.getMessage());
+        }
+    };
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -21,20 +33,6 @@ public class LoadConversationActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-        getConversation(client);
-    }
-
-    private void getConversation(NexmoClient client) {
-        client.getConversation("CONVERSATION_ID", new NexmoRequestListener<NexmoConversation>() {
-            @Override
-            public void onSuccess(@Nullable NexmoConversation conversation) {
-                Timber.d("Conversation loaded");
-            }
-
-            @Override
-            public void onError(@NonNull NexmoApiError apiError) {
-                Timber.d("Error: Unable to load conversation %s", apiError.getMessage());
-            }
-        });
+        client.getConversation("CONVERSATION_ID", conversationListener);
     }
 }

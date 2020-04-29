@@ -11,6 +11,28 @@ import timber.log.Timber
 
 class InviteUserActivityKotlin : AppCompatActivity() {
 
+    private val conversationListener = object : NexmoRequestListener<NexmoConversation> {
+        override fun onSuccess(conversation: NexmoConversation?) {
+            Timber.d("Conversation loaded")
+
+            conversation?.invite("userName", inviteUserListener)
+        }
+
+        override fun onError(apiError: NexmoApiError) {
+            Timber.d("Error: Unable to load conversation ${apiError.message}")
+        }
+    }
+
+    private val inviteUserListener = object : NexmoRequestListener<String> {
+        override fun onSuccess(result: String?) {
+            Timber.d("User invited $result")
+        }
+
+        override fun onError(apiError: NexmoApiError) {
+            Timber.d("Error: Unable to invite user ${apiError.message}")
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
@@ -18,33 +40,6 @@ class InviteUserActivityKotlin : AppCompatActivity() {
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
-        getConversation(client)
-    }
-
-    private fun getConversation(client: NexmoClient) {
-        client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
-
-            override fun onSuccess(conversation: NexmoConversation?) {
-                Timber.d("Conversation loaded")
-
-                conversation?.let { inviteUser(it, "userName") }
-            }
-
-            override fun onError(apiError: NexmoApiError) {
-                Timber.d("Error: Unable to load conversation ${apiError.message}")
-            }
-        })
-    }
-
-    private fun inviteUser(conversation: NexmoConversation, userName: String) {
-        conversation.invite(userName, object : NexmoRequestListener<String> {
-            override fun onSuccess(result: String?) {
-                Timber.d("User invited $result")
-            }
-
-            override fun onError(apiError: NexmoApiError) {
-                Timber.d("Error: Unable to invite user ${apiError.message}")
-            }
-        })
+        client.getConversation("CONVERSATION_ID", conversationListener)
     }
 }

@@ -11,6 +11,28 @@ import timber.log.Timber
 
 class LeaveConversationActivityKotlin : AppCompatActivity() {
 
+    private val conversationListener = object : NexmoRequestListener<NexmoConversation> {
+        override fun onSuccess(conversation: NexmoConversation?) {
+            conversation?.allMembers?.firstOrNull()?.let {
+                conversation.kick(it, conversationKickListener)
+            }
+        }
+
+        override fun onError(apiError: NexmoApiError) {
+            Timber.d("Error: Unable to load conversation ${apiError.message}")
+        }
+    }
+
+    private val conversationKickListener = object : NexmoRequestListener<Any> {
+        override fun onSuccess(p0: Any?) {
+            Timber.d("User kick success")
+        }
+
+        override fun onError(apiError: NexmoApiError) {
+            Timber.d("Error: Unable to kick user ${apiError.message}")
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
@@ -18,29 +40,6 @@ class LeaveConversationActivityKotlin : AppCompatActivity() {
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
-        getConversation(client)
-    }
-
-    private fun getConversation(client: NexmoClient) {
-        client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
-
-            override fun onSuccess(conversation: NexmoConversation?) {
-                conversation?.allMembers?.firstOrNull()?.let {
-                    conversation.kick(it, object : NexmoRequestListener<Any> {
-                        override fun onSuccess(p0: Any?) {
-                            Timber.d("User kick success")
-                        }
-
-                        override fun onError(apiError: NexmoApiError) {
-                            Timber.d("Error: Unable to kick user ${apiError.message}")
-                        }
-                    })
-                }
-            }
-
-            override fun onError(apiError: NexmoApiError) {
-                Timber.d("Error: Unable to load conversation ${apiError.message}")
-            }
-        })
+        client.getConversation("CONVERSATION_ID", conversationListener)
     }
 }
