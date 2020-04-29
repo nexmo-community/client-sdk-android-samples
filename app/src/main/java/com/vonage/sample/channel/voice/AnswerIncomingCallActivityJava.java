@@ -25,6 +25,7 @@ public class AnswerIncomingCallActivityJava extends AppCompatActivity {
             Timber.d("Error: Unable to answer incoming call " + apiError.getMessage());
         }
     };
+
     private NexmoIncomingCallListener incomingCallListener = new NexmoIncomingCallListener() {
         @Override
         public void onIncomingCall(NexmoCall call) {

@@ -45,10 +45,10 @@ class LoadConversationEventsActivityKotlin : AppCompatActivity() {
     }
 
     private fun getConversationEvents(conversation: NexmoConversation) {
-
         conversation.getEvents(
-
-            100, NexmoPageOrder.NexmoMPageOrderAsc, null,
+            100,
+            NexmoPageOrder.NexmoMPageOrderAsc,
+            null,
             object : NexmoRequestListener<NexmoEventsPage> {
                 override fun onSuccess(nexmoEventsPage: NexmoEventsPage?) {
                     nexmoEventsPage?.pageResponse?.data?.let {
