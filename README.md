@@ -21,7 +21,7 @@ Client allows to configure multiple settings during initialization:
 
 Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/in-app-messaging/overview) and [Voice](https://developer.nexmo.com/client-sdk/in-app-voice/overview) communication channels.
 
-## Messagings
+## Messaging
 
 ### Examples
 
