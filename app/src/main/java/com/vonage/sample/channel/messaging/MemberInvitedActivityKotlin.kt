@@ -13,8 +13,6 @@ import timber.log.Timber
 
 class MemberInvitedActivityKotlin : AppCompatActivity() {
 
-    private var conversation: NexmoConversation? = null
-
     private val memberEventListener = object : NexmoMemberEventListener {
         override fun onMemberInvited(memberEvent: NexmoMemberEvent) {
             Timber.d("Member ${memberEvent.member.user.name} invited to the conversation")
@@ -42,7 +40,6 @@ class MemberInvitedActivityKotlin : AppCompatActivity() {
                 Timber.d("Conversation loaded")
 
                 conversation?.addMemberEventListener(memberEventListener)
-                this@MemberInvitedActivityKotlin.conversation = conversation
             }
 
             override fun onError(apiError: NexmoApiError) {
