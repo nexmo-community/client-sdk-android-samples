@@ -22,6 +22,7 @@ public class AcceptUserInvitationAndJoinConversationActivityJava extends AppComp
         public void onSuccess(@Nullable NexmoConversation conversation) {
             Timber.d("Conversation loaded");
 
+            AcceptUserInvitationAndJoinConversationActivityJava.this.conversation = conversation;
             conversation.addMemberEventListener(memberEventListener);
         }
 
