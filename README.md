@@ -1,6 +1,10 @@
 # Nexmo Android Client SDK Samples
 
-Repository contains Base [configuration](configuration.md) and various samples of using Nexmo [Android Client-SDK](https://developer.nexmo.com/client-sdk/overview).
+Repository contains Base [configuration](configuration.md) and provides some examples for you to better understand the 
+features of the [Android Client-SDK](https://developer.nexmo.com/client-sdk/overview). The sample applications are 
+meant to be used with the latest version of the Android Client-SDK. Feel free to copy and modify the source code herein 
+for your own projects. Please consider sharing your modifications with us, especially if they might benefit other 
+developers using the OpenTok Android SDK.
 
 # Client configuration
 
