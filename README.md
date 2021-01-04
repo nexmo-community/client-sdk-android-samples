@@ -1,9 +1,9 @@
 # Nexmo Android Client SDK Samples
 
-Repository contains Base [configuration](configuration.md) and provides some examples for you to better understand the 
-features of the [Android Client-SDK](https://developer.nexmo.com/client-sdk/overview). The sample applications are 
-meant to be used with the latest version of the Android Client-SDK. Feel free to copy and modify the source code herein 
-for your own projects. Please consider sharing your modifications with us, especially if they might benefit other 
+Repository contains Base [configuration](configuration.md) and provides some examples for you to better understand the
+features of the [Android Client-SDK](https://developer.nexmo.com/client-sdk/overview). The sample applications are
+meant to be used with the latest version of the Android Client-SDK. Feel free to copy and modify the source code herein
+for your own projects. Please consider sharing your modifications with us, especially if they might benefit other
 developers using the OpenTok Android SDK.
 
 # Client configuration
@@ -51,7 +51,7 @@ Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 ### More
 
 - Documentation at [Nexmo portal documentation](https://developer.nexmo.com/client-sdk/in-app-messaging/overview)
-- Main interaction class: [NexmoCall](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoConversation.html)
+- Main interaction class: [NexmoConversation](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoConversation.html)
 - Full [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android)
 
 ## Voice
