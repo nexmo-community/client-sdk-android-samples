@@ -51,6 +51,7 @@ Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 ### More
 
 - Documentation at [API Developer Portal](https://developer.nexmo.com/client-sdk/in-app-messaging/overview)
+- Tutorials at [API Developer Portal](https://developer.nexmo.com/client-sdk/tutorials/)
 - Main interaction class: [NexmoConversation](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoConversation.html)
 - Full [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android)
 
@@ -62,7 +63,7 @@ The capabilities of `in-app call` are limited, because they doesn't utilize [Voi
 
 - Start in-app call - ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/StartInAppCallActivityJava.java))
 - Start server managed call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/StartServerManagedCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/StartServerManagedCallActivityJava.java))
-- Receive call events ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/ReceiveCallEventsActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/ReceiveCallEventsActivityJava.java))
+- Receive call events, DTMF ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/ReceiveCallEventsActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/ReceiveCallEventsActivityJava.java))
 - Answer incoming call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/AnswerIncomingCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/AnswerIncomingCallActivityJava.java))
 - Hang up call ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/HangupCallActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/HangupCallActivityJava.java))
 - Mute call / member / my member ([Kotlin](app/src/main/java/com/vonage/sample/channel/voice/MuteActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/voice/MuteActivityJava.java))
@@ -73,5 +74,6 @@ The capabilities of `in-app call` are limited, because they doesn't utilize [Voi
 ### More
 
 - Documentation at [API Developer Portal](https://developer.nexmo.com/client-sdk/in-app-voice/overview)
+- Tutorials at [API Developer Portal](https://developer.nexmo.com/client-sdk/tutorials/)
 - Main interaction class: [NexmoCall](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoCall.html)
 - Full [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android)
