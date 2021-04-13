@@ -1,5 +1,6 @@
 package com.vonage.sample.channel.voice
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
@@ -56,6 +57,7 @@ class EnableEarmuffActivityKotlin : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
@@ -63,6 +65,7 @@ class EnableEarmuffActivityKotlin : AppCompatActivity() {
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
+
         client.call("123456", NexmoCallHandler.SERVER, callListener)
     }
 }

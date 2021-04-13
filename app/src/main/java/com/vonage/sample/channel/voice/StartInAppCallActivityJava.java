@@ -1,5 +1,6 @@
 package com.vonage.sample.channel.voice;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ public class StartInAppCallActivityJava extends AppCompatActivity {
         }
     };
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -34,7 +36,6 @@ public class StartInAppCallActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-
 
         client.call("123456", NexmoCallHandler.IN_APP, callListener);
     }

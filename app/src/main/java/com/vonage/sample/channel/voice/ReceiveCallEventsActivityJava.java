@@ -1,11 +1,18 @@
 package com.vonage.sample.channel.voice;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.nexmo.client.*;
+import com.nexmo.client.NexmoCall;
+import com.nexmo.client.NexmoCallEventListener;
+import com.nexmo.client.NexmoCallHandler;
+import com.nexmo.client.NexmoCallMember;
+import com.nexmo.client.NexmoCallMemberStatus;
+import com.nexmo.client.NexmoClient;
+import com.nexmo.client.NexmoMediaActionState;
 import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
@@ -49,6 +56,7 @@ public class ReceiveCallEventsActivityJava extends AppCompatActivity {
         }
     };
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -57,7 +65,6 @@ public class ReceiveCallEventsActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-
 
         client.call("123456", NexmoCallHandler.IN_APP, callListener);
     }
