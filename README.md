@@ -51,6 +51,7 @@ Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 ### More
 
 - Documentation at [API Developer Portal](https://developer.nexmo.com/client-sdk/in-app-messaging/overview)
+- Tutorials at [API Developer Portal](https://developer.nexmo.com/client-sdk/tutorials/)
 - Main interaction class: [NexmoConversation](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoConversation.html)
 - Full [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android)
 
@@ -73,5 +74,6 @@ The capabilities of `in-app call` are limited, because they doesn't utilize [Voi
 ### More
 
 - Documentation at [API Developer Portal](https://developer.nexmo.com/client-sdk/in-app-voice/overview)
+- Tutorials at [API Developer Portal](https://developer.nexmo.com/client-sdk/tutorials/)
 - Main interaction class: [NexmoCall](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoCall.html)
 - Full [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android)
