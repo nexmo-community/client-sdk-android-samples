@@ -1,4 +1,4 @@
-name: Build app-to-app-java
+name: Build app
 
 on:
   push:

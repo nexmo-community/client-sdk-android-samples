@@ -1,4 +1,4 @@
-# Nexmo Android Client SDK Samples
+# Android Client SDK Samples
 
 Repository contains Base [configuration](configuration.md) and provides some examples for you to better understand the
 features of the [Android Client-SDK](https://developer.nexmo.com/client-sdk/overview). The sample applications are
@@ -50,13 +50,13 @@ Android-Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 
 ### More
 
-- Documentation at [Nexmo portal documentation](https://developer.nexmo.com/client-sdk/in-app-messaging/overview)
+- Documentation at [API Developer Portal](https://developer.nexmo.com/client-sdk/in-app-messaging/overview)
 - Main interaction class: [NexmoConversation](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoConversation.html)
 - Full [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android)
 
 ## Voice
 
-The capabilities of `in-app call` are limited, because they doesn't utilize [Nexmo Voice API](https://developer.nexmo.com/voice/voice-api/overview). This method is recommended mostly for onboarding. Later, it is recommended to use a `server managed call`.
+The capabilities of `in-app call` are limited, because they doesn't utilize [Voice API](https://developer.nexmo.com/voice/voice-api/overview). This method is recommended mostly for onboarding. Later, it is recommended to use a `server managed call`.
 
 ### Examples
 
@@ -72,6 +72,6 @@ The capabilities of `in-app call` are limited, because they doesn't utilize [Nex
 
 ### More
 
-- Documentation at [Nexmo portal documentation](https://developer.nexmo.com/client-sdk/in-app-voice/overview)
+- Documentation at [API Developer Portal](https://developer.nexmo.com/client-sdk/in-app-voice/overview)
 - Main interaction class: [NexmoCall](https://developer.nexmo.com/sdk/stitch/android/com/nexmo/client/NexmoCall.html)
 - Full [code reference](https://developer.nexmo.com/client-sdk/sdk-documentation/android)
