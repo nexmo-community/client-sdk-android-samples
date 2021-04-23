@@ -5,15 +5,19 @@ import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoClient
 import com.nexmo.client.NexmoConversation
+import com.nexmo.client.NexmoConversationListener
+import com.nexmo.client.NexmoMember
+import com.nexmo.client.NexmoMemberUpdatedType
 import com.nexmo.client.request_listener.NexmoApiError
+import com.nexmo.client.request_listener.NexmoConnectionListener
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
 
-class JoinConversationActivityKotlin : AppCompatActivity() {
+class ConversationMemberUpdatedActivityKotlin : AppCompatActivity() {
 
     private val getConversationListener = object : NexmoRequestListener<NexmoConversation> {
         override fun onSuccess(conversation: NexmoConversation?) {
-            conversation?.join("member name", joinConversationListener)
+            conversation?.addNexmoConversationListener(conversationListener)
         }
 
         override fun onError(apiError: NexmoApiError) {
@@ -21,13 +25,11 @@ class JoinConversationActivityKotlin : AppCompatActivity() {
         }
     }
 
-    private val joinConversationListener = object : NexmoRequestListener<String> {
-        override fun onSuccess(string: String?) {
-            Timber.d("User join success")
-        }
+    private val conversationListener = object: NexmoConversationListener {
+        override fun conversationExpired() {}
 
-        override fun onError(apiError: NexmoApiError) {
-            Timber.d("Error: Unable join user ${apiError.message}")
+        override fun onMemberUpdated(nexmoMember: NexmoMember, nexmoMemberUpdatedType: NexmoMemberUpdatedType?) {
+            Timber.d("Member ${nexmoMember.user.name} updated")
         }
     }
 

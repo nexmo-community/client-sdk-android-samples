@@ -13,7 +13,7 @@ import timber.log.Timber;
 
 public class CreateNewConversationActivityJava extends AppCompatActivity {
 
-    private NexmoRequestListener<NexmoConversation> conversationListener = new NexmoRequestListener<NexmoConversation>() {
+    private NexmoRequestListener<NexmoConversation> newConversationListener = new NexmoRequestListener<NexmoConversation>() {
         @Override
         public void onSuccess(@Nullable NexmoConversation conversation) {
             Timber.d("Conversation loaded");
@@ -33,6 +33,6 @@ public class CreateNewConversationActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-        client.newConversation("CONVERSATION_NAME", "CONVERSATION_DISPLAY_NAME", conversationListener);
+        client.newConversation("CONVERSATION_NAME", "CONVERSATION_DISPLAY_NAME", newConversationListener);
     }
 }
