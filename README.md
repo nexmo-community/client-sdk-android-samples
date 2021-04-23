@@ -37,6 +37,7 @@ Android Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 - Send message ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SendMessageActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SendMessageActivityJava.java))
 - Receive message ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveMessageActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveMessageActivityJava.java))
 - Typing indicator ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/TypingIndicatorActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/TypingIndicatorActivityJava.java))
+- Mark message as senn ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/MarkMessageAsSeenActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/MarkMessageAsSeenActivityJava.java))
 - Invite user ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/InviteUserActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/InviteUserActivityJava.java))
 - Join conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/JoinConversationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/JoinConversationActivityJava.java))
 - Leave conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/LeaveConversationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/LeaveConversationActivityJava.java))
