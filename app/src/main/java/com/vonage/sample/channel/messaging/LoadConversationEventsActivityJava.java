@@ -26,7 +26,7 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
         }
     };
 
-    private NexmoRequestListener<NexmoConversation> conversationListener = new NexmoRequestListener<NexmoConversation>() {
+    private NexmoRequestListener<NexmoConversation> getConversationListener = new NexmoRequestListener<NexmoConversation>() {
         @Override
         public void onSuccess(@Nullable NexmoConversation conversation) {
             conversation.getEvents(100, NexmoPageOrder.NexmoMPageOrderAsc, null, conversationEventsListener);
@@ -46,7 +46,7 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-        client.getConversation("CONVERSATION_ID", conversationListener);
+        client.getConversation("CONVERSATION_ID", getConversationListener);
     }
 
     private void processEvents(Collection<NexmoEvent> events) {

@@ -31,11 +31,14 @@ Android Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 ### Examples
 
 - Load conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationActivityJava.java))
+- Create new conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/CreateNewConversationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/CreateNewConversationActivityJava.java))
 - Load conversation events([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationEventsActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/LoadConversationEventsActivityJava.java))
 - Load more conversation events, prev/next pages ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/LoadMoreConversationEventsActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/LoadMoreConversationEventsActivityJava.java))
 - Send message ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SendMessageActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SendMessageActivityJava.java))
 - Receive message ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveMessageActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveMessageActivityJava.java))
 - Typing indicator ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/TypingIndicatorActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/TypingIndicatorActivityJava.java))
+- Mark message as senn ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/MarkMessageAsSeenActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/MarkMessageAsSeenActivityJava.java))
+- Mark message as delivered ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/MarkMessageAsDeliveredActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/MarkMessageAsDeliveredActivityJava.java))
 - Invite user ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/InviteUserActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/InviteUserActivityJava.java))
 - Join conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/JoinConversationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/JoinConversationActivityJava.java))
 - Leave conversation ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/LeaveConversationActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/LeaveConversationActivityJava.java))
@@ -48,6 +51,8 @@ Android Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 - Send custom event ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SendCustomEventActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SendCustomEventActivityJava.java))
 - Receive custom event ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveCustomEventActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveCustomEventActivityJava.java))
 - The event seen by another user ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SeenReceiptActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SeenReceiptActivityJava.java))
+- Conversation member has been updated ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ConversationMemberUpdatedActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ConversationMemberUpdatedActivityJava.java))
+- Conversation has expired ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ConversationExpiredActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ConversationExpiredActivityJava.java))
 
 ### More
 

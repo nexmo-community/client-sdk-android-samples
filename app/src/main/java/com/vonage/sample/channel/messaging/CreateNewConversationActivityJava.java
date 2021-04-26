@@ -11,25 +11,12 @@ import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
-public class InviteUserActivityJava extends AppCompatActivity {
+public class CreateNewConversationActivityJava extends AppCompatActivity {
 
-    private NexmoRequestListener<String> inviteUserListener = new NexmoRequestListener<String>() {
-        @Override
-        public void onSuccess(@Nullable String result) {
-            Timber.d("User invited " + result);
-        }
-
-        @Override
-        public void onError(@NonNull NexmoApiError apiError) {
-            Timber.d("Error: Unable to invite user " + apiError.getMessage());
-        }
-    };
-    private NexmoRequestListener<NexmoConversation> getConversationListener = new NexmoRequestListener<NexmoConversation>() {
+    private NexmoRequestListener<NexmoConversation> newConversationListener = new NexmoRequestListener<NexmoConversation>() {
         @Override
         public void onSuccess(@Nullable NexmoConversation conversation) {
             Timber.d("Conversation loaded");
-
-            conversation.invite("userName", inviteUserListener);
         }
 
         @Override
@@ -46,6 +33,6 @@ public class InviteUserActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-        client.getConversation("CONVERSATION_ID", getConversationListener);
+        client.newConversation("CONVERSATION_NAME", "CONVERSATION_DISPLAY_NAME", newConversationListener);
     }
 }

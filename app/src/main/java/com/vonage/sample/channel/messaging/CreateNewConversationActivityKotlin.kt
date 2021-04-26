@@ -9,25 +9,15 @@ import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
 
-class JoinConversationActivityKotlin : AppCompatActivity() {
+class CreateNewConversationActivityKotlin : AppCompatActivity() {
 
-    private val getConversationListener = object : NexmoRequestListener<NexmoConversation> {
+    private val newConversationListener = object : NexmoRequestListener<NexmoConversation> {
         override fun onSuccess(conversation: NexmoConversation?) {
-            conversation?.join("member name", joinConversationListener)
+            Timber.d("Conversation loaded")
         }
 
         override fun onError(apiError: NexmoApiError) {
             Timber.d("Error: Unable to load conversation ${apiError.message}")
-        }
-    }
-
-    private val joinConversationListener = object : NexmoRequestListener<String> {
-        override fun onSuccess(string: String?) {
-            Timber.d("User join success")
-        }
-
-        override fun onError(apiError: NexmoApiError) {
-            Timber.d("Error: Unable join user ${apiError.message}")
         }
     }
 
@@ -38,6 +28,6 @@ class JoinConversationActivityKotlin : AppCompatActivity() {
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
-        client.getConversation("CONVERSATION_ID", getConversationListener)
+        client.newConversation("CONVERSATION_NAME", "CONVERSATION_DISPLAY_NAME", newConversationListener)
     }
 }

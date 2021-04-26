@@ -7,34 +7,35 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.nexmo.client.NexmoClient;
 import com.nexmo.client.NexmoConversation;
+import com.nexmo.client.NexmoConversationListener;
+import com.nexmo.client.NexmoMember;
+import com.nexmo.client.NexmoMemberUpdatedType;
 import com.nexmo.client.request_listener.NexmoApiError;
+import com.nexmo.client.request_listener.NexmoConnectionListener;
 import com.nexmo.client.request_listener.NexmoRequestListener;
 import timber.log.Timber;
 
-public class InviteUserActivityJava extends AppCompatActivity {
+public class ConversationMemberUpdatedActivityJava extends AppCompatActivity {
 
-    private NexmoRequestListener<String> inviteUserListener = new NexmoRequestListener<String>() {
-        @Override
-        public void onSuccess(@Nullable String result) {
-            Timber.d("User invited " + result);
-        }
-
-        @Override
-        public void onError(@NonNull NexmoApiError apiError) {
-            Timber.d("Error: Unable to invite user " + apiError.getMessage());
-        }
-    };
     private NexmoRequestListener<NexmoConversation> getConversationListener = new NexmoRequestListener<NexmoConversation>() {
         @Override
         public void onSuccess(@Nullable NexmoConversation conversation) {
-            Timber.d("Conversation loaded");
-
-            conversation.invite("userName", inviteUserListener);
+            conversation.addNexmoConversationListener(conversationListener);
         }
 
         @Override
         public void onError(@NonNull NexmoApiError apiError) {
             Timber.d("Error: Unable to load conversation %s", apiError.getMessage());
+        }
+    };
+
+    private NexmoConversationListener conversationListener = new NexmoConversationListener() {
+        @Override
+        public void conversationExpired() {}
+
+        @Override
+        public void onMemberUpdated(@NonNull NexmoMember nexmoMember, NexmoMemberUpdatedType nexmoMemberUpdatedType) {
+            Timber.d("Member " + nexmoMember.getUser().getName() + " updated");
         }
     };
 
