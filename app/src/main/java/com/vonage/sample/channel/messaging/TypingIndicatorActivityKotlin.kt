@@ -12,6 +12,7 @@ import com.nexmo.client.NexmoMessageEventListener
 import com.nexmo.client.NexmoSeenEvent
 import com.nexmo.client.NexmoTextEvent
 import com.nexmo.client.NexmoTypingEvent
+import com.nexmo.client.NexmoTypingEventListener
 import com.nexmo.client.NexmoTypingState
 import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
@@ -19,24 +20,7 @@ import timber.log.Timber
 
 class TypingIndicatorActivityKotlin : AppCompatActivity() {
 
-    private val messageListener = object : NexmoMessageEventListener {
-        override fun onTypingEvent(typingEvent: NexmoTypingEvent) {
-            val userName = typingEvent.fromMember.user.name
-            val typingState = if(typingEvent.state == NexmoTypingState.ON) "typing" else "not typing"
-
-            Timber.d("User $userName is $typingState")
-        }
-
-        override fun onAttachmentEvent(attachmentEvent: NexmoAttachmentEvent) {}
-
-        override fun onTextEvent(textEvent: NexmoTextEvent) {}
-
-        override fun onSeenReceipt(seenEvent: NexmoSeenEvent) {}
-
-        override fun onEventDeleted(deletedEvent: NexmoDeletedEvent) {}
-
-        override fun onDeliveredReceipt(deliveredEvent: NexmoDeliveredEvent) {}
-    }
+    private val typyingEventListener = object : NexmoTypingEventListener
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -52,7 +36,7 @@ class TypingIndicatorActivityKotlin : AppCompatActivity() {
         client.getConversation("CONVERSATION_ID", object : NexmoRequestListener<NexmoConversation> {
             override fun onSuccess(conversation: NexmoConversation?) {
                 Timber.d("Conversation loaded")
-                conversation?.addMessageEventListener(messageListener)
+                conversation?.addTypingEventListener(typyingEventListener)
             }
 
             override fun onError(apiError: NexmoApiError) {

@@ -12,24 +12,9 @@ import timber.log.Timber;
 
 public class TypingIndicatorActivityJava extends AppCompatActivity {
 
-    private NexmoMessageEventListener messageListener = new NexmoMessageEventListener() {
+    private NexmoTypingEventListener typingEventListener = new NexmoTypingEventListener() {
         @Override
-        public void onTextEvent(@NonNull NexmoTextEvent textEvent) {}
-
-        @Override
-        public void onAttachmentEvent(@NonNull NexmoAttachmentEvent attachmentEvent) {}
-
-        @Override
-        public void onEventDeleted(@NonNull NexmoDeletedEvent deletedEvent) {}
-
-        @Override
-        public void onSeenReceipt(@NonNull NexmoSeenEvent seenEvent) {}
-
-        @Override
-        public void onDeliveredReceipt(@NonNull NexmoDeliveredEvent deliveredEvent) {}
-
-        @Override
-        public void onTypingEvent(@NonNull NexmoTypingEvent typingEvent) {
+        public void onTyping(NexmoTypingEvent typingEvent) {
             String userName = typingEvent.getFromMember().getUser().getName();
 
             String typingState;
@@ -61,7 +46,8 @@ public class TypingIndicatorActivityJava extends AppCompatActivity {
             @Override
             public void onSuccess(@Nullable NexmoConversation conversation) {
                 Timber.d("Conversation loaded");
-                conversation.addMessageEventListener(messageListener);
+
+                conversation.addTypingEventListener(typingEventListener);
             }
 
             @Override
