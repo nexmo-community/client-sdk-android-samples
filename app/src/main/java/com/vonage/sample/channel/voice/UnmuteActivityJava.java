@@ -46,6 +46,7 @@ public class UnmuteActivityJava extends AppCompatActivity {
             Timber.d("Error: Unmute member " + apiError.getMessage());
         }
     };
+
     private NexmoRequestListener<NexmoCall> callListener = new NexmoRequestListener<NexmoCall>() {
         @Override
         public void onSuccess(@Nullable NexmoCall call) {

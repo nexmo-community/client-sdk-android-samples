@@ -30,6 +30,7 @@ public class MuteActivityJava extends AppCompatActivity {
             Timber.d("Error: Mute member " + apiError.getMessage());
         }
     };
+
     private NexmoCallEventListener callEventListener = new NexmoCallEventListener() {
         @Override
         public void onMuteChanged(NexmoMediaActionState muteState, NexmoCallMember callMember) {
@@ -45,6 +46,7 @@ public class MuteActivityJava extends AppCompatActivity {
         @Override
         public void onDTMF(String digit, NexmoCallMember callMember) {}
     };
+
     private NexmoRequestListener<NexmoCall> callListener = new NexmoRequestListener<NexmoCall>() {
         @Override
         public void onSuccess(@Nullable NexmoCall call) {
