@@ -13,7 +13,7 @@ class CreateNewConversationActivityKotlin : AppCompatActivity() {
 
     private val newConversationListener = object : NexmoRequestListener<NexmoConversation> {
         override fun onSuccess(conversation: NexmoConversation?) {
-            Timber.d("Conversation loaded")
+            Timber.d("Conversation loaded ${conversation?.displayName}")
         }
 
         override fun onError(apiError: NexmoApiError) {

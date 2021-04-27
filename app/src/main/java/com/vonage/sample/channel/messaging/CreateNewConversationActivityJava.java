@@ -16,7 +16,7 @@ public class CreateNewConversationActivityJava extends AppCompatActivity {
     private NexmoRequestListener<NexmoConversation> newConversationListener = new NexmoRequestListener<NexmoConversation>() {
         @Override
         public void onSuccess(@Nullable NexmoConversation conversation) {
-            Timber.d("Conversation loaded");
+            Timber.d("Conversation loaded " + conversation.getDisplayName());
         }
 
         @Override
