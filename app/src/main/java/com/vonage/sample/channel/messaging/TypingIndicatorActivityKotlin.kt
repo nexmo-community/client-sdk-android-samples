@@ -20,7 +20,14 @@ import timber.log.Timber
 
 class TypingIndicatorActivityKotlin : AppCompatActivity() {
 
-    private val typyingEventListener = object : NexmoTypingEventListener
+    private val typyingEventListener = object : NexmoTypingEventListener {
+        override fun onTyping(typingEvent: NexmoTypingEvent?) {
+            val userName = typingEvent?.fromMember?.user?.name
+            val typingState = if(typingEvent?.state == NexmoTypingState.ON) "typing" else "not typing"
+
+            Timber.d("User $userName is $typingState")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
