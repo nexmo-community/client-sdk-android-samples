@@ -51,10 +51,9 @@ public class LoadMoreConversationEventsActivityJava extends AppCompatActivity {
     }
 
     private void loadPrevEventsPage() {
-        // Bug isPrevPageExist is not public https://nexmoinc.atlassian.net/browse/CSA-1234
-//        if(eventsPage.isPrevPageExist()) {
-//            eventsPage.getPrev(conversationEventsListener);
-//        }
+        if(eventsPage.isPrevPageExist()) {
+            eventsPage.getPrev(conversationEventsListener);
+        }
     }
 
     private void loadNextEventsPage() {

@@ -53,10 +53,9 @@ class LoadMoreConversationEventsActivityKotlin : AppCompatActivity() {
     }
 
     private fun loadPrevEventsPage() {
-        // Bug isPrevPageExist is not public https://nexmoinc.atlassian.net/browse/CSA-1234
-//        if(eventsPage?.isPrevPageExist == true) {
-//            eventsPage?.getPrev(conversationEventsListener)
-//        }
+        if(eventsPage?.isPrevPageExist == true) {
+            eventsPage?.getPrev(conversationEventsListener)
+        }
     }
 
     private fun loadNextEventsPage() {
