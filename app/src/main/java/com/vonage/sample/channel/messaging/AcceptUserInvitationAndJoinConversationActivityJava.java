@@ -17,7 +17,7 @@ public class AcceptUserInvitationAndJoinConversationActivityJava extends AppComp
 
     private NexmoConversation conversation;
 
-    private NexmoRequestListener<NexmoConversation> conversationListener = new NexmoRequestListener<NexmoConversation>() {
+    private NexmoRequestListener<NexmoConversation> getConversationListener = new NexmoRequestListener<NexmoConversation>() {
         @Override
         public void onSuccess(@Nullable NexmoConversation conversation) {
             Timber.d("Conversation loaded");
@@ -66,6 +66,6 @@ public class AcceptUserInvitationAndJoinConversationActivityJava extends AppComp
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-        client.getConversation("CONVERSATION_ID", conversationListener);
+        client.getConversation("CONVERSATION_ID", getConversationListener);
     }
 }

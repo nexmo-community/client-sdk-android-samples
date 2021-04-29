@@ -21,7 +21,7 @@ import timber.log.Timber
 
 class LoadConversationEventsActivityKotlin : AppCompatActivity() {
 
-    private val conversationListener = object : NexmoRequestListener<NexmoConversation> {
+    private val getConversationListener = object : NexmoRequestListener<NexmoConversation> {
         override fun onSuccess(conversation: NexmoConversation?) {
             Timber.d("Conversation loaded")
 
@@ -57,7 +57,7 @@ class LoadConversationEventsActivityKotlin : AppCompatActivity() {
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
-        client.getConversation("CONVERSATION_ID", conversationListener)
+        client.getConversation("CONVERSATION_ID", getConversationListener)
     }
 
     private fun processEvents(events: List<NexmoEvent>) {

@@ -15,7 +15,7 @@ class LoadMoreConversationEventsActivityKotlin : AppCompatActivity() {
 
     private var eventsPage: NexmoEventsPage? = null
 
-    private val conversationListener = object : NexmoRequestListener<NexmoConversation> {
+    private val getConversationListener = object : NexmoRequestListener<NexmoConversation> {
         override fun onSuccess(conversation: NexmoConversation?) {
             Timber.d("Conversation loaded")
 
@@ -49,14 +49,13 @@ class LoadMoreConversationEventsActivityKotlin : AppCompatActivity() {
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
-        client.getConversation("CONVERSATION_ID", conversationListener)
+        client.getConversation("CONVERSATION_ID", getConversationListener)
     }
 
     private fun loadPrevEventsPage() {
-        // Bug isPrevPageExist is not public https://nexmoinc.atlassian.net/browse/CSA-1234
-//        if(eventsPage?.isPrevPageExist == true) {
-//            eventsPage?.getPrev(conversationEventsListener)
-//        }
+        if(eventsPage?.isPrevPageExist == true) {
+            eventsPage?.getPrev(conversationEventsListener)
+        }
     }
 
     private fun loadNextEventsPage() {

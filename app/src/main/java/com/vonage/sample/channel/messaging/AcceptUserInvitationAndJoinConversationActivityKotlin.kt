@@ -15,7 +15,7 @@ class AcceptUserInvitationAndJoinConversationActivityKotlin : AppCompatActivity(
 
     private var conversation: NexmoConversation? = null
 
-    private val conversationListener = object : NexmoRequestListener<NexmoConversation> {
+    private val getConversationListener = object : NexmoRequestListener<NexmoConversation> {
         override fun onSuccess(conversation: NexmoConversation?) {
             Timber.d("Conversation loaded")
 
@@ -56,6 +56,6 @@ class AcceptUserInvitationAndJoinConversationActivityKotlin : AppCompatActivity(
         // NexmoClient.Builder().build(this)
         val client = NexmoClient.get()
         client.login("JWT token")
-        client.getConversation("CONVERSATION_ID", conversationListener)
+        client.getConversation("CONVERSATION_ID", getConversationListener)
     }
 }

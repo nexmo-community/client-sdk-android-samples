@@ -24,7 +24,7 @@ public class JoinConversationActivityJava extends AppCompatActivity {
             Timber.d("Error: Unable to join user " + apiError.getMessage());
         }
     };
-    private NexmoRequestListener<NexmoConversation> conversationListener = new NexmoRequestListener<NexmoConversation>() {
+    private NexmoRequestListener<NexmoConversation> getConversationListener = new NexmoRequestListener<NexmoConversation>() {
         @Override
         public void onSuccess(@Nullable NexmoConversation conversation) {
             Timber.d("Conversation loaded");
@@ -46,6 +46,6 @@ public class JoinConversationActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-        client.getConversation("CONVERSATION_ID", conversationListener);
+        client.getConversation("CONVERSATION_ID", getConversationListener);
     }
 }

@@ -27,7 +27,7 @@ public class LoadMoreConversationEventsActivityJava extends AppCompatActivity {
             Timber.d("Error: Unable to load conversation events %s", apiError.getMessage());
         }
     };
-    private NexmoRequestListener<NexmoConversation> conversationListener = new NexmoRequestListener<NexmoConversation>() {
+    private NexmoRequestListener<NexmoConversation> getConversationListener = new NexmoRequestListener<NexmoConversation>() {
         @Override
         public void onSuccess(@Nullable NexmoConversation conversation) {
             conversation.getEvents(100, NexmoPageOrder.NexmoMPageOrderAsc, null, conversationEventsListener);
@@ -47,14 +47,13 @@ public class LoadMoreConversationEventsActivityJava extends AppCompatActivity {
         // new NexmoClient.Builder().build(this);
         NexmoClient client = NexmoClient.get();
         client.login("JWT token");
-        client.getConversation("CONVERSATION_ID", conversationListener);
+        client.getConversation("CONVERSATION_ID", getConversationListener);
     }
 
     private void loadPrevEventsPage() {
-        // Bug isPrevPageExist is not public https://nexmoinc.atlassian.net/browse/CSA-1234
-//        if(eventsPage.isPrevPageExist()) {
-//            eventsPage.getPrev(conversationEventsListener);
-//        }
+        if(eventsPage.isPrevPageExist()) {
+            eventsPage.getPrev(conversationEventsListener);
+        }
     }
 
     private void loadNextEventsPage() {
