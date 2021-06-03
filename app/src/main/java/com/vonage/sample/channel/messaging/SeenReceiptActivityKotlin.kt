@@ -26,7 +26,7 @@ class SeenReceiptActivityKotlin : AppCompatActivity() {
         override fun onTextEvent(textEvent: NexmoTextEvent) {}
 
         override fun onSeenReceipt(seenEvent: NexmoSeenEvent) {
-            val userName = seenEvent.fromMember.user.name
+            val userName = seenEvent.embeddedInfo.user.name
 
             Timber.d("Event ${seenEvent.initialEventId()} seen by User $userName")
         }

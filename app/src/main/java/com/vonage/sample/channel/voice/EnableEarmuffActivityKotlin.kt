@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoCall
 import com.nexmo.client.NexmoCallEventListener
 import com.nexmo.client.NexmoCallHandler
-import com.nexmo.client.NexmoCallMember
 import com.nexmo.client.NexmoCallMemberStatus
+import com.nexmo.client.NexmoMember
 import com.nexmo.client.NexmoClient
 import com.nexmo.client.NexmoMediaActionState
 import com.nexmo.client.request_listener.NexmoApiError
@@ -22,12 +22,10 @@ class EnableEarmuffActivityKotlin : AppCompatActivity() {
             Timber.d("Call started: ${call.toString()}")
 
             call?.addCallEventListener(callEventListener)
+            val nexmoMember = call?.allMembers?.firstOrNull()
 
-            // Earmuff member
-            call?.callMembers?.firstOrNull()?.earmuff(true, earmuffListener)
-
-            // Earmuff my member
-            call?.myCallMember?.earmuff(true, earmuffListener)
+            // Enable member earmuff
+            nexmoMember?.enableEarmuff(earmuffListener)
         }
 
         override fun onError(apiError: NexmoApiError) {
@@ -36,24 +34,24 @@ class EnableEarmuffActivityKotlin : AppCompatActivity() {
     }
 
     private val callEventListener = object : NexmoCallEventListener {
-        override fun onDTMF(digit: String?, callMember: NexmoCallMember?) {}
+        override fun onDTMF(digit: String?, nexmoMember: NexmoMember?) {}
 
-        override fun onMemberStatusUpdated(memberStatus: NexmoCallMemberStatus?, callMember: NexmoCallMember?) {}
+        override fun onMemberStatusUpdated(memberStatus: NexmoCallMemberStatus?, nexmoMember: NexmoMember?) {}
 
-        override fun onMuteChanged(muteState: NexmoMediaActionState?, callMember: NexmoCallMember?) {}
+        override fun onMuteChanged(muteState: NexmoMediaActionState?, nexmoMember: NexmoMember?) {}
 
-        override fun onEarmuffChanged(earmuffState: NexmoMediaActionState?, callMember: NexmoCallMember?) {
-            Timber.d("onEarmuffChanged(): earmuffState: $earmuffState, callMember: $callMember")
+        override fun onEarmuffChanged(earmuffState: NexmoMediaActionState?, nexmoMember: NexmoMember?) {
+            Timber.d("onEarmuffChanged(): earmuffState: $earmuffState, nexmoMember: $nexmoMember")
         }
     }
 
-    private val earmuffListener = object : NexmoRequestListener<NexmoCallMember> {
-        override fun onSuccess(callMember: NexmoCallMember?) {
-            Timber.d("Member earmuff enabled $callMember")
+    private val earmuffListener = object : NexmoRequestListener<Void> {
+        override fun onSuccess(result: Void?) {
+            Timber.d("Member earmuff enabled")
         }
 
-        override fun onError(apiError: NexmoApiError) {
-            Timber.d("Error: Earmuff member ${apiError.message}")
+        override fun onError(error: NexmoApiError) {
+            TODO("not implemented")
         }
     }
 

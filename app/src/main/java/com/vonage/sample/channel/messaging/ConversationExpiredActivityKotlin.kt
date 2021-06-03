@@ -25,13 +25,7 @@ class ConversationExpiredActivityKotlin : AppCompatActivity() {
         }
     }
 
-    private val conversationListener = object: NexmoConversationListener {
-        override fun conversationExpired() {
-            Timber.d("Conversation expired")
-        }
-
-        override fun onMemberUpdated(nexmoMember: NexmoMember, nexmoMemberUpdatedType: NexmoMemberUpdatedType?) {}
-    }
+    private val conversationListener = NexmoConversationListener { Timber.d("Conversation expired") }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)

@@ -7,6 +7,7 @@ import com.nexmo.client.NexmoClient
 import com.nexmo.client.NexmoConversation
 import com.nexmo.client.NexmoMemberEvent
 import com.nexmo.client.NexmoMemberEventListener
+import com.nexmo.client.NexmoMemberSummary
 import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
@@ -29,14 +30,17 @@ class AcceptUserInvitationAndJoinConversationActivityKotlin : AppCompatActivity(
     }
 
     private val memberEventListener = object : NexmoMemberEventListener {
-        override fun onMemberInvited(memberEvent: NexmoMemberEvent) {
-            // Join user to the conversation (accept the invitation)
-            conversation?.join(memberEvent.member.user.name, joinConversationListener)
+        override fun onMemberInvited(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            conversation?.join(member.user.name, joinConversationListener)
         }
 
-        override fun onMemberRemoved(memberEvent: NexmoMemberEvent) {}
+        override fun onMemberAdded(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            TODO("not implemented")
+        }
 
-        override fun onMemberAdded(memberEvent: NexmoMemberEvent) {}
+        override fun onMemberRemoved(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            TODO("not implemented")
+        }
     }
 
     private val joinConversationListener = object : NexmoRequestListener<String> {

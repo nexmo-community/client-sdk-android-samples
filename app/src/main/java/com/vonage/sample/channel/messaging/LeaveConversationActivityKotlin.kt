@@ -13,8 +13,9 @@ class LeaveConversationActivityKotlin : AppCompatActivity() {
 
     private val getConversationListener = object : NexmoRequestListener<NexmoConversation> {
         override fun onSuccess(conversation: NexmoConversation?) {
-            conversation?.allMembers?.firstOrNull()?.let {
-                conversation.kick(it, conversationKickListener)
+
+            conversation?.myMember?.let {
+                conversation.kick("memberName", conversationKickListener)
             }
         }
 
@@ -23,8 +24,8 @@ class LeaveConversationActivityKotlin : AppCompatActivity() {
         }
     }
 
-    private val conversationKickListener = object : NexmoRequestListener<Any> {
-        override fun onSuccess(p0: Any?) {
+    private val conversationKickListener = object : NexmoRequestListener<Void> {
+        override fun onSuccess(result: Void?) {
             Timber.d("User kick success")
         }
 

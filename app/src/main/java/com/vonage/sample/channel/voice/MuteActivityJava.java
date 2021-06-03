@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.nexmo.client.NexmoCall;
 import com.nexmo.client.NexmoCallEventListener;
 import com.nexmo.client.NexmoCallHandler;
-import com.nexmo.client.NexmoCallMember;
+import com.nexmo.client.NexmoMember;
 import com.nexmo.client.NexmoCallMemberStatus;
 import com.nexmo.client.NexmoClient;
 import com.nexmo.client.NexmoMediaActionState;
@@ -19,32 +19,32 @@ import timber.log.Timber;
 
 public class MuteActivityJava extends AppCompatActivity {
 
-    private NexmoRequestListener<NexmoCallMember> muteListener = new NexmoRequestListener<NexmoCallMember>() {
-        @Override
-        public void onSuccess(NexmoCallMember callMember) {
-            Timber.d("Member muted " + callMember);
-        }
-
+    private NexmoRequestListener<Void> muteListener = new NexmoRequestListener<Void>() {
         @Override
         public void onError(NexmoApiError apiError) {
             Timber.d("Error: Mute member " + apiError.getMessage());
+        }
+
+        @Override
+        public void onSuccess(@Nullable @org.jetbrains.annotations.Nullable Void result) {
+            Timber.d("Member muted");
         }
     };
 
     private NexmoCallEventListener callEventListener = new NexmoCallEventListener() {
         @Override
-        public void onMuteChanged(NexmoMediaActionState muteState, NexmoCallMember callMember) {
-            Timber.d("NexmoMediaActionState(): muteState: " + muteState + ", callMember: " + callMember);
+        public void onMuteChanged(NexmoMediaActionState muteState, NexmoMember nexmoMember) {
+            Timber.d("NexmoMediaActionState(): muteState: " + muteState + ", nexmoMember: " + nexmoMember);
         }
 
         @Override
-        public void onMemberStatusUpdated(NexmoCallMemberStatus $memberStatus, NexmoCallMember callMember) {}
+        public void onMemberStatusUpdated(NexmoCallMemberStatus $memberStatus, NexmoMember nexmoMember) {}
 
         @Override
-        public void onEarmuffChanged(NexmoMediaActionState earmuffState, NexmoCallMember callMember) {}
+        public void onEarmuffChanged(NexmoMediaActionState earmuffState, NexmoMember nexmoMember) {}
 
         @Override
-        public void onDTMF(String digit, NexmoCallMember callMember) {}
+        public void onDTMF(String digit, NexmoMember nexmoMember) {}
     };
 
     private NexmoRequestListener<NexmoCall> callListener = new NexmoRequestListener<NexmoCall>() {
@@ -55,11 +55,8 @@ public class MuteActivityJava extends AppCompatActivity {
             call.addCallEventListener(callEventListener);
 
             // Mute member
-            NexmoCallMember callMember = call.getCallMembers().iterator().next();
-            callMember.mute(true, muteListener);
-
-            // Mute my member
-            call.getMyCallMember().mute(true, muteListener);
+            NexmoMember nexmoMember = call.getMyMember();
+            nexmoMember.enableMute(muteListener);
 
             // Mute whole call
             call.mute(true);

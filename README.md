@@ -51,7 +51,6 @@ Android Client SDK supports [Messaging](https://developer.nexmo.com/client-sdk/i
 - Send custom event ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SendCustomEventActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SendCustomEventActivityJava.java))
 - Receive custom event ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveCustomEventActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ReceiveCustomEventActivityJava.java))
 - The event seen by another user ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/SeenReceiptActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/SeenReceiptActivityJava.java))
-- Conversation member has been updated ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ConversationMemberUpdatedActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ConversationMemberUpdatedActivityJava.java))
 - Conversation has expired ([Kotlin](app/src/main/java/com/vonage/sample/channel/messaging/ConversationExpiredActivityKotlin.kt), [Java](app/src/main/java/com/vonage/sample/channel/messaging/ConversationExpiredActivityJava.java))
 
 ### More

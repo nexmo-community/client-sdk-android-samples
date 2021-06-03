@@ -33,9 +33,6 @@ public class ConversationExpiredActivityJava extends AppCompatActivity {
         public void conversationExpired() {
             Timber.d("Conversation expired");
         }
-
-        @Override
-        public void onMemberUpdated(@NonNull NexmoMember nexmoMember, NexmoMemberUpdatedType nexmoMemberUpdatedType) {}
     };
 
     @Override
