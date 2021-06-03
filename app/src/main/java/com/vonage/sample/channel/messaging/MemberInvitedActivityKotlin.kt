@@ -7,6 +7,7 @@ import com.nexmo.client.NexmoClient
 import com.nexmo.client.NexmoConversation
 import com.nexmo.client.NexmoMemberEvent
 import com.nexmo.client.NexmoMemberEventListener
+import com.nexmo.client.NexmoMemberSummary
 import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
@@ -14,13 +15,17 @@ import timber.log.Timber
 class MemberInvitedActivityKotlin : AppCompatActivity() {
 
     private val memberEventListener = object : NexmoMemberEventListener {
-        override fun onMemberInvited(memberEvent: NexmoMemberEvent) {
-            Timber.d("Member ${memberEvent.member.user.name} invited to the conversation")
+        override fun onMemberInvited(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            TODO("not implemented")
         }
 
-        override fun onMemberAdded(memberEvent: NexmoMemberEvent) {}
+        override fun onMemberAdded(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            Timber.d("Member ${member.user.name} invited to the conversation")
+        }
 
-        override fun onMemberRemoved(memberEvent: NexmoMemberEvent) {}
+        override fun onMemberRemoved(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            TODO("not implemented")
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {

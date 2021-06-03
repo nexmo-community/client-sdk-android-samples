@@ -24,7 +24,7 @@ class ReceiveMessageActivityKotlin : AppCompatActivity() {
         override fun onAttachmentEvent(attachmentEvent: NexmoAttachmentEvent) {}
 
         override fun onTextEvent(textEvent: NexmoTextEvent) {
-            val userName = textEvent.fromMember.user.name
+            val userName = textEvent.embeddedInfo.user.name
             val text = textEvent.text
 
             Timber.d("Message received. User $userName : $text")

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.nexmo.client.NexmoCall
 import com.nexmo.client.NexmoCallEventListener
 import com.nexmo.client.NexmoCallHandler
-import com.nexmo.client.NexmoCallMember
+import com.nexmo.client.NexmoMember
 import com.nexmo.client.NexmoCallMemberStatus
 import com.nexmo.client.NexmoClient
 import com.nexmo.client.NexmoMediaActionState
@@ -30,20 +30,20 @@ class ReceiveCallEventsActivityKotlin : AppCompatActivity() {
     }
 
     private val callEventListener = object : NexmoCallEventListener {
-        override fun onDTMF(digit: String?, callMember: NexmoCallMember?) {
-            Timber.d("v: digit: $digit, callMember: $callMember")
+        override fun onDTMF(digit: String?, nexmoMember: NexmoMember?) {
+            Timber.d("v: digit: $digit, nexmoMember: $nexmoMember")
         }
 
-        override fun onMemberStatusUpdated(memberStatus: NexmoCallMemberStatus?, callMember: NexmoCallMember?) {
-            Timber.d("onMemberStatusUpdated: status: $memberStatus, callMember: $callMember")
+        override fun onMemberStatusUpdated(memberStatus: NexmoCallMemberStatus?, nexmoMember: NexmoMember?) {
+            Timber.d("onMemberStatusUpdated: status: $memberStatus, nexmoMember: $nexmoMember")
         }
 
-        override fun onMuteChanged(muteState: NexmoMediaActionState?, callMember: NexmoCallMember?) {
-            Timber.d("onMuteChanged: muteState: $muteState, callMember: $callMember")
+        override fun onMuteChanged(muteState: NexmoMediaActionState?, nexmoMember: NexmoMember?) {
+            Timber.d("onMuteChanged: muteState: $muteState, nexmoMember: $nexmoMember")
         }
 
-        override fun onEarmuffChanged(earmuffState: NexmoMediaActionState?, callMember: NexmoCallMember?) {
-            Timber.d("onEarmuffChanged: earmuffState: $earmuffState, callMember: $callMember")
+        override fun onEarmuffChanged(earmuffState: NexmoMediaActionState?, nexmoMember: NexmoMember?) {
+            Timber.d("onEarmuffChanged: earmuffState: $earmuffState, nexmoMember: $nexmoMember")
         }
     }
 

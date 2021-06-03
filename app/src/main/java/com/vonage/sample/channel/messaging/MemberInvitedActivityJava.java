@@ -5,12 +5,10 @@ import android.os.PersistableBundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.nexmo.client.NexmoClient;
-import com.nexmo.client.NexmoConversation;
-import com.nexmo.client.NexmoMemberEvent;
-import com.nexmo.client.NexmoMemberEventListener;
+import com.nexmo.client.*;
 import com.nexmo.client.request_listener.NexmoApiError;
 import com.nexmo.client.request_listener.NexmoRequestListener;
+import org.jetbrains.annotations.NotNull;
 import timber.log.Timber;
 
 public class MemberInvitedActivityJava extends AppCompatActivity {
@@ -19,15 +17,19 @@ public class MemberInvitedActivityJava extends AppCompatActivity {
 
     private NexmoMemberEventListener memberEventListener = new NexmoMemberEventListener() {
         @Override
-        public void onMemberInvited(@NonNull NexmoMemberEvent memberEvent) {
-            Timber.d("Member " + memberEvent.getMember().getUser().getName() + " invited to the conversation");
+        public void onMemberInvited(@NonNull @NotNull NexmoMemberEvent event, @NonNull @NotNull NexmoMemberSummary member) {
+            Timber.d("Member " + event.getEmbeddedInfo().getUser().getName() + " invited to the conversation");
         }
 
         @Override
-        public void onMemberAdded(@NonNull NexmoMemberEvent memberEvent) {}
+        public void onMemberAdded(@NonNull @NotNull NexmoMemberEvent event, @NonNull @NotNull NexmoMemberSummary member) {
+
+        }
 
         @Override
-        public void onMemberRemoved(@NonNull NexmoMemberEvent memberEvent) {}
+        public void onMemberRemoved(@NonNull @NotNull NexmoMemberEvent event, @NonNull @NotNull NexmoMemberSummary member) {
+
+        }
     };
 
     @Override

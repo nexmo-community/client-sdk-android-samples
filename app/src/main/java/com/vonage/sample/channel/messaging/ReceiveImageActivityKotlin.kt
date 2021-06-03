@@ -22,7 +22,7 @@ class ReceiveImageActivityKotlin : AppCompatActivity() {
         override fun onTypingEvent(typingEvent: NexmoTypingEvent) {}
 
         override fun onAttachmentEvent(attachmentEvent: NexmoAttachmentEvent) {
-            val userName = attachmentEvent.fromMember.user.name
+            val userName = attachmentEvent.embeddedInfo.user.name
 
             Timber.d("Image event received. User $userName")
 

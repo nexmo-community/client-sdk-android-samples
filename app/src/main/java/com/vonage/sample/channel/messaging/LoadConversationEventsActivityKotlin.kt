@@ -75,34 +75,34 @@ class LoadConversationEventsActivityKotlin : AppCompatActivity() {
         }
     }
 
-    private fun getEventText(typingEvent: NexmoTypingEvent): String {
-        val user = typingEvent.fromMember.user.name
-        val typingState = if (typingEvent.state == NexmoTypingState.ON) "typing" else "not typing"
-        return "$user is $typingState"
+    private fun getEventText(event: NexmoTypingEvent): String {
+        val userName = event.embeddedInfo.user.name
+        val typingState = if (event.state == NexmoTypingState.ON) "typing" else "not typing"
+        return "$userName is $typingState"
     }
 
-    private fun getEventText(deliveredEvent: NexmoDeliveredEvent): String {
-        val user = deliveredEvent.fromMember.user.name
-        return "Event from $user with id ${deliveredEvent.initialEventId()} delivered at ${deliveredEvent.creationDate}"
+    private fun getEventText(event: NexmoDeliveredEvent): String {
+        val userName = event.embeddedInfo.user.name
+        return "Event from $userName with id ${event.initialEventId()} delivered at ${event.creationDate}"
     }
 
-    private fun getEventText(seenEvent: NexmoSeenEvent): String {
-        val user = seenEvent.fromMember.user.name
-        return "$user saw event with id ${seenEvent.initialEventId()} at ${seenEvent.creationDate}"
+    private fun getEventText(event: NexmoSeenEvent): String {
+        val user = event.embeddedInfo.user.name
+        return "$user saw event with id ${event.initialEventId()} at ${event.creationDate}"
     }
 
-    private fun getEventText(textEvent: NexmoTextEvent): String {
-        val user = textEvent.fromMember.user.name
-        return "$user said: ${textEvent.text}"
+    private fun getEventText(event: NexmoTextEvent): String {
+        val userName = event.embeddedInfo.user.name
+        return "$userName said: ${event.text}"
     }
 
-    private fun getEventText(memberEvent: NexmoMemberEvent): String {
-        val user = memberEvent.member.user.name
+    private fun getEventText(event: NexmoMemberEvent): String {
+        val userName = event.embeddedInfo.user.name
 
-        return when (memberEvent.state) {
-            NexmoMemberState.JOINED -> "$user joined"
-            NexmoMemberState.INVITED -> "$user invited"
-            NexmoMemberState.LEFT -> "$user left"
+        return when (event.state) {
+            NexmoMemberState.JOINED -> "$userName joined"
+            NexmoMemberState.INVITED -> "$userName invited"
+            NexmoMemberState.LEFT -> "$userName left"
             else -> "Error: Unknown member event state"
         }
     }

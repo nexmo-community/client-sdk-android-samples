@@ -30,10 +30,7 @@ public class LeaveConversationActivityJava extends AppCompatActivity {
         public void onSuccess(@Nullable NexmoConversation conversation) {
             Timber.d("Conversation loaded");
 
-            if (conversation.getAllMembers().size() > 0) {
-                NexmoMember member = conversation.getAllMembers().iterator().next();
-                conversation.kick(member, kickListener);
-            }
+            conversation.kick("memberName", kickListener);
         }
 
         @Override

@@ -7,6 +7,7 @@ import com.nexmo.client.NexmoClient
 import com.nexmo.client.NexmoConversation
 import com.nexmo.client.NexmoMemberEvent
 import com.nexmo.client.NexmoMemberEventListener
+import com.nexmo.client.NexmoMemberSummary
 import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import timber.log.Timber
@@ -14,12 +15,16 @@ import timber.log.Timber
 class MemberRemovedActivityKotlin : AppCompatActivity() {
 
     private val memberEventListener = object : NexmoMemberEventListener {
-        override fun onMemberInvited(memberEvent: NexmoMemberEvent) {}
+        override fun onMemberInvited(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            TODO("not implemented")
+        }
 
-        override fun onMemberAdded(memberEvent: NexmoMemberEvent) {}
+        override fun onMemberAdded(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            TODO("not implemented")
+        }
 
-        override fun onMemberRemoved(memberEvent: NexmoMemberEvent) {
-            Timber.d("Member ${memberEvent.member.user.name} removed from the conversation")
+        override fun onMemberRemoved(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            Timber.d("Member ${member.user.name} removed from the conversation")
         }
     }
 

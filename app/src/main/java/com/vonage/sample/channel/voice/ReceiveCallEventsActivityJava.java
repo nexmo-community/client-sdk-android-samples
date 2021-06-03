@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.nexmo.client.NexmoCall;
 import com.nexmo.client.NexmoCallEventListener;
 import com.nexmo.client.NexmoCallHandler;
-import com.nexmo.client.NexmoCallMember;
+import com.nexmo.client.NexmoMember;
 import com.nexmo.client.NexmoCallMemberStatus;
 import com.nexmo.client.NexmoClient;
 import com.nexmo.client.NexmoMediaActionState;
@@ -22,23 +22,23 @@ public class ReceiveCallEventsActivityJava extends AppCompatActivity {
     private NexmoCallEventListener callEventListener = new NexmoCallEventListener() {
 
         @Override
-        public void onMemberStatusUpdated(NexmoCallMemberStatus $memberStatus, NexmoCallMember callMember) {
-            Timber.d("onMemberStatusUpdated(): status: " + $memberStatus + " callMember: " + callMember);
+        public void onMemberStatusUpdated(NexmoCallMemberStatus $memberStatus, NexmoMember nexmoMember) {
+            Timber.d("onMemberStatusUpdated(): status: " + $memberStatus + " nexmoMember: " + nexmoMember);
         }
 
         @Override
-        public void onMuteChanged(NexmoMediaActionState muteState, NexmoCallMember callMember) {
-            Timber.d("NexmoMediaActionState(): muteState: " + muteState + ", callMember: " + callMember);
+        public void onMuteChanged(NexmoMediaActionState muteState, NexmoMember nexmoMember) {
+            Timber.d("NexmoMediaActionState(): muteState: " + muteState + ", nexmoMember: " + nexmoMember);
         }
 
         @Override
-        public void onEarmuffChanged(NexmoMediaActionState earmuffState, NexmoCallMember callMember) {
-            Timber.d("onEarmuffChanged(): earmuffState: " + earmuffState + ", callMember: " + callMember);
+        public void onEarmuffChanged(NexmoMediaActionState earmuffState, NexmoMember nexmoMember) {
+            Timber.d("onEarmuffChanged(): earmuffState: " + earmuffState + ", nexmoMember: " + nexmoMember);
         }
 
         @Override
-        public void onDTMF(String digit, NexmoCallMember callMember) {
-            Timber.d("onDTMF(): digit:" + digit + ", callMember: " + callMember);
+        public void onDTMF(String digit, NexmoMember nexmoMember) {
+            Timber.d("onDTMF(): digit:" + digit + ", nexmoMember: " + nexmoMember);
         }
     };
 

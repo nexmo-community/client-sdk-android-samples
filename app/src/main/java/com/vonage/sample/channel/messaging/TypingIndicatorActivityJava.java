@@ -15,7 +15,7 @@ public class TypingIndicatorActivityJava extends AppCompatActivity {
     private NexmoTypingEventListener typingEventListener = new NexmoTypingEventListener() {
         @Override
         public void onTyping(NexmoTypingEvent typingEvent) {
-            String userName = typingEvent.getFromMember().getUser().getName();
+            String userName = typingEvent.getEmbeddedInfo().getUser().getName();
 
             String typingState;
 

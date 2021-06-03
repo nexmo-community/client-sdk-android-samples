@@ -54,8 +54,7 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
             String message = "";
 
             if (event instanceof NexmoMemberEvent) {
-                NexmoMemberEvent memberEvent = (NexmoMemberEvent) event;
-                message = getEventText(memberEvent);
+                message = event.getEmbeddedInfo().getUser().getName();
             }
             if (event instanceof NexmoTextEvent) {
                 NexmoTextEvent textEvent = (NexmoTextEvent) event;
@@ -80,37 +79,36 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
         }
     }
 
-    private String getEventText(NexmoTypingEvent typingEvent) {
-        String user = typingEvent.getFromMember().getUser().getName();
+    private String getEventText(NexmoTypingEvent event) {
+        String userName = event.getEmbeddedInfo().getUser().getName();
         String typingState;
 
-        if (typingEvent.getState() == NexmoTypingState.ON) {
+        if (event.getState() == NexmoTypingState.ON) {
             typingState = "typing";
         } else {
             typingState = "not typing";
         }
 
-        return user + " is " + typingState;
+        return userName + " is " + typingState;
     }
 
-    private String getEventText(NexmoDeliveredEvent deliveredEvent) {
-        String user = deliveredEvent.getFromMember().getUser().getName();
-        return "Event from " + user + " with id " + deliveredEvent.initialEventId() + " delivered at " + deliveredEvent.initialEventId();
+    private String getEventText(NexmoDeliveredEvent event) {
+        String user = event.getEmbeddedInfo().getUser().getName();
+        return "Event from " + user + " with id " + event.initialEventId() + " delivered at " + event.initialEventId();
     }
 
-    private String getEventText(NexmoSeenEvent seenEvent) {
-        String user = seenEvent.getFromMember().getUser().getName();
-        return user + " saw event with id " + seenEvent.initialEventId() + " at " + seenEvent.getCreationDate();
+    private String getEventText(NexmoSeenEvent event) {
+        String userName = event.getEmbeddedInfo().getUser().getName();
+        return userName + " saw event with id " + event.initialEventId() + " at " + event.getCreationDate();
     }
 
-    private String getEventText(NexmoTextEvent textEvent) {
-        String user = textEvent.getFromMember().getUser().getName();
-        return user + " said: " + textEvent.getText();
+    private String getEventText(NexmoTextEvent event) {
+        String userName = event.getEmbeddedInfo().getUser().getName();
+        return userName + " said: " + event.getText();
     }
 
-    private String getEventText(NexmoMemberEvent memberEvent) {
-        String user = memberEvent.getMember().getUser().getName();
-        String event = memberEvent.getState().name();
-        return user + " " + event;
+    private String getEventText(NexmoMemberEvent event) {
+        String userName = event.getEmbeddedInfo().getUser().getName();
+        return userName + " " + event;
     }
 }

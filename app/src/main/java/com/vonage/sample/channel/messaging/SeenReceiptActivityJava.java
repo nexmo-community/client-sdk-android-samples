@@ -24,7 +24,7 @@ public class SeenReceiptActivityJava extends AppCompatActivity {
 
         @Override
         public void onSeenReceipt(@NonNull NexmoSeenEvent seenEvent) {
-            String userName = seenEvent.getFromMember().getUser().getName();
+            String userName = seenEvent.getEmbeddedInfo().getUser().getName();
 
             Timber.d("Event " + seenEvent.initialEventId() + "seen by User " + userName);
         }
