@@ -14,9 +14,7 @@ class LeaveConversationActivityKotlin : AppCompatActivity() {
     private val getConversationListener = object : NexmoRequestListener<NexmoConversation> {
         override fun onSuccess(conversation: NexmoConversation?) {
 
-            conversation?.myMember?.let {
-                conversation.kick("memberName", conversationKickListener)
-            }
+            conversation?.kick("memberName", conversationKickListener)
         }
 
         override fun onError(apiError: NexmoApiError) {

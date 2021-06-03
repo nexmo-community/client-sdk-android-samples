@@ -26,7 +26,7 @@ class UnmuteActivityKotlin : AppCompatActivity() {
             val nexmoMember = call?.myMember
 
             // Mute member
-            nexmoMember?.enableMute(muteListener)
+            nexmoMember?.disableMute(muteListener)
 
             // Mute whole call
             call?.mute(false)
