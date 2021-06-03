@@ -54,7 +54,8 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
             String message = "";
 
             if (event instanceof NexmoMemberEvent) {
-                message = event.getEmbeddedInfo().getUser().getName();
+                NexmoMemberEvent memberEvent = (NexmoMemberEvent) event;
+                message = getEventText(memberEvent);
             }
             if (event instanceof NexmoTextEvent) {
                 NexmoTextEvent textEvent = (NexmoTextEvent) event;
