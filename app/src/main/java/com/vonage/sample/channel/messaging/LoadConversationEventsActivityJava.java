@@ -81,7 +81,7 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
     }
 
     private String getEventText(NexmoTypingEvent event) {
-        String userName = event.getEmbeddedInfo().getUser().getName();
+        String fromMemberId = event.getEmbeddedInfo().getUser().getName();
         String typingState;
 
         if (event.getState() == NexmoTypingState.ON) {
@@ -90,26 +90,26 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
             typingState = "not typing";
         }
 
-        return userName + " is " + typingState;
+        return fromMemberId + " is " + typingState;
     }
 
     private String getEventText(NexmoDeliveredEvent event) {
-        String user = event.getEmbeddedInfo().getUser().getName();
-        return "Event from " + user + " with id " + event.initialEventId() + " delivered at " + event.initialEventId();
+        String fromMemberId = event.getFromMemberId();
+        return "Event from " + fromMemberId + " with id " + event.initialEventId() + " delivered at " + event.initialEventId();
     }
 
     private String getEventText(NexmoSeenEvent event) {
-        String userName = event.getEmbeddedInfo().getUser().getName();
-        return userName + " saw event with id " + event.initialEventId() + " at " + event.getCreationDate();
+        String fromMemberId = event.getFromMemberId();
+        return fromMemberId + " saw event with id " + event.initialEventId() + " at " + event.getCreationDate();
     }
 
     private String getEventText(NexmoTextEvent event) {
-        String userName = event.getEmbeddedInfo().getUser().getName();
-        return userName + " said: " + event.getText();
+        String fromMemberId = event.getFromMemberId();
+        return fromMemberId + " said: " + event.getText();
     }
 
     private String getEventText(NexmoMemberEvent event) {
-        String userName = event.getEmbeddedInfo().getUser().getName();
-        return userName + " invited by" + event.getInvitedBy() + " " + event;
+        String fromMemberId = event.getFromMemberId();
+        return fromMemberId + " invited by" + event.getInvitedBy() + " " + event;
     }
 }

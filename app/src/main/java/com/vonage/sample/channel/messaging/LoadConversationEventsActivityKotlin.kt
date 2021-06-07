@@ -76,28 +76,25 @@ class LoadConversationEventsActivityKotlin : AppCompatActivity() {
     }
 
     private fun getEventText(event: NexmoTypingEvent): String {
-        val userName = event.embeddedInfo.user.name
         val typingState = if (event.state == NexmoTypingState.ON) "typing" else "not typing"
-        return "$userName is $typingState"
+        return "${event.fromMemberId} is $typingState"
     }
 
     private fun getEventText(event: NexmoDeliveredEvent): String {
-        val userName = event.embeddedInfo.user.name
+        val userName = event.fromMemberId
         return "Event from $userName with id ${event.initialEventId()} delivered at ${event.creationDate}"
     }
 
     private fun getEventText(event: NexmoSeenEvent): String {
-        val user = event.embeddedInfo.user.name
-        return "$user saw event with id ${event.initialEventId()} at ${event.creationDate}"
+        return "${event.fromMemberId} saw event with id ${event.initialEventId()} at ${event.creationDate}"
     }
 
     private fun getEventText(event: NexmoTextEvent): String {
-        val userName = event.embeddedInfo.user.name
-        return "$userName said: ${event.text}"
+        return "${event.fromMemberId} said: ${event.text}"
     }
 
     private fun getEventText(event: NexmoMemberEvent): String {
-        val userName = event.embeddedInfo.user.name
+        val userName = event.fromMemberId
 
         return when (event.state) {
             NexmoMemberState.JOINED -> "$userName joined"
