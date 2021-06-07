@@ -101,7 +101,7 @@ class LoadConversationEventsActivityKotlin : AppCompatActivity() {
 
         return when (event.state) {
             NexmoMemberState.JOINED -> "$userName joined"
-            NexmoMemberState.INVITED -> "$userName invited"
+            NexmoMemberState.INVITED -> "$userName invited by ${event.invitedBy}"
             NexmoMemberState.LEFT -> "$userName left"
             else -> "Error: Unknown member event state"
         }

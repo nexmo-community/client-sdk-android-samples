@@ -110,6 +110,6 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
 
     private String getEventText(NexmoMemberEvent event) {
         String userName = event.getEmbeddedInfo().getUser().getName();
-        return userName + " " + event;
+        return userName + " invited by" + event.getInvitedBy() + " " + event;
     }
 }
