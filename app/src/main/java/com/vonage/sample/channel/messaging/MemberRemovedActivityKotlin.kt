@@ -15,16 +15,12 @@ import timber.log.Timber
 class MemberRemovedActivityKotlin : AppCompatActivity() {
 
     private val memberEventListener = object : NexmoMemberEventListener {
-        override fun onMemberInvited(event: NexmoMemberEvent, member: NexmoMemberSummary) {
-            TODO("not implemented")
-        }
+        override fun onMemberInvited(event: NexmoMemberEvent, member: NexmoMemberSummary) {}
 
-        override fun onMemberAdded(event: NexmoMemberEvent, member: NexmoMemberSummary) {
-            TODO("not implemented")
-        }
+        override fun onMemberAdded(event: NexmoMemberEvent, member: NexmoMemberSummary) {}
 
         override fun onMemberRemoved(event: NexmoMemberEvent, member: NexmoMemberSummary) {
-            Timber.d("Member ${member.user.name} removed from the conversation")
+            Timber.d("Member ${member.user.name} was removed from the conversation")
         }
     }
 

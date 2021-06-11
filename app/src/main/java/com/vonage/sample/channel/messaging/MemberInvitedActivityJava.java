@@ -18,7 +18,10 @@ public class MemberInvitedActivityJava extends AppCompatActivity {
     private NexmoMemberEventListener memberEventListener = new NexmoMemberEventListener() {
         @Override
         public void onMemberInvited(@NonNull @NotNull NexmoMemberEvent event, @NonNull @NotNull NexmoMemberSummary member) {
-            Timber.d("Member " + event.getEmbeddedInfo().getUser().getName() + " invited to the conversation");
+            Timber.d("Member " + member.getUser().getName()
+                    + " was invited to the conversation by "
+                    + event.getEmbeddedInfo().getUser().getName()
+            );
         }
 
         @Override

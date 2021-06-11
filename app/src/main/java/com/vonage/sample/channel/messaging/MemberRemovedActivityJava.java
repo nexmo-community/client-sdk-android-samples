@@ -28,7 +28,7 @@ public class MemberRemovedActivityJava extends AppCompatActivity {
 
         @Override
         public void onMemberRemoved(@NonNull @NotNull NexmoMemberEvent event, @NonNull @NotNull NexmoMemberSummary member) {
-            Timber.d("Member " + event.getEmbeddedInfo().getUser().getName() + " removed from the conversation");
+            Timber.d("Member " + member.getUser().getName() + " was removed from the conversation");
         }
     };
 

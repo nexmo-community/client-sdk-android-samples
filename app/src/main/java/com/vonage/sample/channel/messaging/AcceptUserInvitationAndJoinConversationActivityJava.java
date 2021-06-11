@@ -46,7 +46,7 @@ public class AcceptUserInvitationAndJoinConversationActivityJava extends AppComp
         @Override
         public void onMemberInvited(@NonNull @NotNull NexmoMemberEvent event, @NonNull @NotNull NexmoMemberSummary member) {
             // Join user to the conversation (accept the invitation)
-            conversation.join(event.getEmbeddedInfo().getUser().getName(), joinConversationListener);
+            conversation.join(member.getUser().getName(), joinConversationListener);
         }
 
         @Override

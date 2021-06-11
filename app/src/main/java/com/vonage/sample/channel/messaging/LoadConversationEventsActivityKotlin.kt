@@ -94,12 +94,12 @@ class LoadConversationEventsActivityKotlin : AppCompatActivity() {
     }
 
     private fun getEventText(event: NexmoMemberEvent): String {
-        val userName = event.fromMemberId
+        val fromMemberId = event.fromMemberId
 
         return when (event.state) {
-            NexmoMemberState.JOINED -> "$userName joined"
-            NexmoMemberState.INVITED -> "$userName invited by ${event.invitedBy}"
-            NexmoMemberState.LEFT -> "$userName left"
+            NexmoMemberState.JOINED -> "$fromMemberId joined"
+            NexmoMemberState.INVITED -> "$fromMemberId invited by ${event.invitedBy}"
+            NexmoMemberState.LEFT -> "$fromMemberId left"
             else -> "Error: Unknown member event state"
         }
     }

@@ -31,16 +31,13 @@ class AcceptUserInvitationAndJoinConversationActivityKotlin : AppCompatActivity(
 
     private val memberEventListener = object : NexmoMemberEventListener {
         override fun onMemberInvited(event: NexmoMemberEvent, member: NexmoMemberSummary) {
+            // Join user to the conversation (accept the invitation)
             conversation?.join(member.user.name, joinConversationListener)
         }
 
-        override fun onMemberAdded(event: NexmoMemberEvent, member: NexmoMemberSummary) {
-            TODO("not implemented")
-        }
+        override fun onMemberAdded(event: NexmoMemberEvent, member: NexmoMemberSummary) {}
 
-        override fun onMemberRemoved(event: NexmoMemberEvent, member: NexmoMemberSummary) {
-            TODO("not implemented")
-        }
+        override fun onMemberRemoved(event: NexmoMemberEvent, member: NexmoMemberSummary) {}
     }
 
     private val joinConversationListener = object : NexmoRequestListener<String> {

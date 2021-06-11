@@ -15,10 +15,9 @@ public class ReceiveMessageActivityJava extends AppCompatActivity {
     private NexmoMessageEventListener messageListener = new NexmoMessageEventListener() {
         @Override
         public void onTextEvent(@NonNull NexmoTextEvent textEvent) {
-            String userName = textEvent.getEmbeddedInfo().getUser().getName();
             String text = textEvent.getText();
 
-            Timber.d("Message received. User " + userName + " : " + text);
+            Timber.d("Message received from " + textEvent.getFromMemberId() + " message: " + text);
         }
 
         @Override

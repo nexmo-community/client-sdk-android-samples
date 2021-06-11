@@ -16,16 +16,16 @@ class MemberInvitedActivityKotlin : AppCompatActivity() {
 
     private val memberEventListener = object : NexmoMemberEventListener {
         override fun onMemberInvited(event: NexmoMemberEvent, member: NexmoMemberSummary) {
-            TODO("not implemented")
+            Timber.d(
+                "Member " + member.user.name
+                    + " was invited to the conversation by "
+                    + event.embeddedInfo.user.name
+            )
         }
 
-        override fun onMemberAdded(event: NexmoMemberEvent, member: NexmoMemberSummary) {
-            Timber.d("Member ${member.user.name} invited to the conversation")
-        }
+        override fun onMemberAdded(event: NexmoMemberEvent, member: NexmoMemberSummary) {}
 
-        override fun onMemberRemoved(event: NexmoMemberEvent, member: NexmoMemberSummary) {
-            TODO("not implemented")
-        }
+        override fun onMemberRemoved(event: NexmoMemberEvent, member: NexmoMemberSummary) {}
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {

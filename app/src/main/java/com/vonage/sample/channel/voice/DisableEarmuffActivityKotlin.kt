@@ -50,9 +50,7 @@ class DisableEarmuffActivityKotlin : AppCompatActivity() {
             Timber.d("Member earmuff enabled")
         }
 
-        override fun onError(error: NexmoApiError) {
-            TODO("not implemented")
-        }
+        override fun onError(error: NexmoApiError) {}
     }
 
     @SuppressLint("MissingPermission")

@@ -20,13 +20,9 @@ class ClientFirebaseMessagingServiceKotlin : FirebaseMessagingService() {
         super.onNewToken(token)
 
         client.enablePushNotifications(token, object : NexmoRequestListener<Void> {
-            override fun onSuccess(p0: Void?) {
-                TODO("not implemented")
-            }
+            override fun onSuccess(p0: Void?) {}
 
-            override fun onError(apiError: NexmoApiError) {
-                TODO("not implemented")
-            }
+            override fun onError(apiError: NexmoApiError) {}
         })
     }
 

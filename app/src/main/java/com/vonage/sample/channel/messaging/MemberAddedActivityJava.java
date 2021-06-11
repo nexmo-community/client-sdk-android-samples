@@ -23,7 +23,7 @@ public class MemberAddedActivityJava extends AppCompatActivity {
 
         @Override
         public void onMemberAdded(@NonNull @NotNull NexmoMemberEvent event, @NonNull @NotNull NexmoMemberSummary member) {
-            Timber.d("Member " + event.getEmbeddedInfo().getUser().getName() + " added to the conversation");
+            Timber.d("Member " + member.getUser().getName() + " was added to the conversation");
         }
 
         @Override

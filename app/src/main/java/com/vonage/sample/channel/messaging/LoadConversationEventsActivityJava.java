@@ -81,7 +81,7 @@ public class LoadConversationEventsActivityJava extends AppCompatActivity {
     }
 
     private String getEventText(NexmoTypingEvent event) {
-        String fromMemberId = event.getEmbeddedInfo().getUser().getName();
+        String fromMemberId = event.getFromMemberId();
         String typingState;
 
         if (event.getState() == NexmoTypingState.ON) {
